@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta charset = "utf-8">
+<title>OpenCV.js</title>
+</head>
+<body>
+<h2>OpenCV.js</h2>
+<p id = "status">OpenCV.js is loading...</p>
+<div>
+    <img id = "img1" src = "pic1.jpg" />
+    <img id = "img2" src = "pic2.jpg">
+        <div class = "caption">
+            Run example:  <input type = "button" id = "myButton" onclick = "addW()" value = "Run" disabled = true/>
+        </div>
+        <div class = "inputoutput">
+            <canvas id = "canvasOutput" >
+            </canvas>
+                <div class = "caption">Result
+                </div>
+        </div>
+</div>
+
+<script type = "text/javascript">
+
+//Source:
+//https://docs.opencv.org/master/d2/de8/group__core__array.html#gafafb2513349db3bcff51f54ee5592a19
+
+function addW() {
+    let imgElement1 = document.getElementById('img1');
+    let imgElement2 = document.getElementById('img2');
+    let dst = new cv.Mat();
+    let myButton = document.getElementById("myButton");
+    let mat1 = cv.imread(imgElement1);
+    let mat2 = cv.imread(imgElement2);
+
+    cv.addWeighted(mat1, 0.5, mat2, 0.5, 0.0, dst);
+
+    cv.imshow('canvasOutput', dst);
+
+    mat1.delete();
+    mat2.delete();
+    dst.delete();
+};
+
+function onOpenCvReady() {
+    document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
+    cv["onRuntimeInitialized"] = () => {
+    document.getElementById("myButton").disabled = false;
+    }
+}
+</script>
+
+<script async src = "opencv.js" onload = "onOpenCvReady();" type = "text/javascript">
+</script>
+
+</body>
+
+</html>
