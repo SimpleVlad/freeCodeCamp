@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Hello OpenCV.js</title>
+<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+<script type="text/javascript">
+
+  function onOpenCvReady() {
+    document.getElementById('status').innerHTML = 'OpenCV.js is load.';
+   cv["onRuntimeInitialized"]=()=> {
+       document.getElementById("run").disabled=false;
+  }
+  }
+
+  function runResize(){
+    let mat = cv.imread("imageSrc");
+    let dst = new cv.Mat();
+    let dsize = new cv.Size(100, 100);
+    cv.resize(mat, dst, dsize);
+    cv.imshow('canvasOutput', dst);
+    mat.delete();
+    dst.delete();
+  }
+  </script>
+
+
+</head>
+<body>
+  <h2>Blure OpenCV.js</h2>
+  <p id="status">OpenCV.js is loading...</p>
+
+  <div class="caption"> <input type="button" id="run"  onclick="runResize()" value="Run" disabled=true /></div>
+
+  <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
+  <canvas id="canvasOutput" ></canvas>
+
+</body>
+
+</html>
