@@ -2,20 +2,20 @@
 <head>
 <meta charset="utf-8">
 <title>Hello OpenCV.js</title>
-<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
-<script type="text/javascript">
+<script async src = "https://docs.opencv.org/master/opencv.js" onload = "onOpenCvReady();" type="text/javascript"></script>
+<script type = "text/javascript">
 
   function onOpenCvReady() {
     document.getElementById('status').innerHTML = 'OpenCV.js is load.';
     cv["onRuntimeInitialized"]=()=> {
        document.getElementById("run").disabled=false;
+    }
   }
-  }
-  function runBlur(){
+  function runBlur() {
     let src = cv.imread('imageSrc');
     let dst = new cv.Mat();
-    let ksize = new cv.Size(3, 3);
-    cv.blur(src, dst, ksize);
+    let kernelSize = new cv.Size(3, 3);
+    cv.blur(src, dst, kernelSize);
     cv.imshow('canvasOutput', dst);
     src.delete();
     dst.delete();
