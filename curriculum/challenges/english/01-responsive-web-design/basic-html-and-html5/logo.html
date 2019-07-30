@@ -1,59 +1,64 @@
 <html>
 <head>
-<meta charset = "utf-8">
+<meta charset="utf-8">
 <title>OpenCV.js</title>
 </head>
 <body>
 <h2>OpenCV.js</h2>
-<p id = "status">OpenCV.js is loading...</p>
+<p id="status">OpenCV.js is loading...</p>
 <div>
-    <div class = "inputoutput">
-            <div class = "caption">
-                Run example:  <input type = "button" id = "myButton" onclick = "draw()" value = "Run" disabled = true />
+    <div class="inputoutput">
+            <div class="caption">
+                Run example:<input type="button" id="myButton"
+                onclick="drawing()" value="Run" disabled=true/>
             </div>
     </div>
-        <div class = "inputoutput">
-            <canvas id = "canvasOutput" >
+        <div class="inputoutput">
+            <canvas id="canvasOutput" >
             </canvas>
-                <div class = "caption">Result
+                <div class="caption">Result
                 </div>
         </div>
 </div>
 
-<script type = "text/javascript">
+<script type="text/javascript">
 
 //Source:
 //https://docs.opencv.org/2.4/modules/core/doc/drawing_functions.html
 
-function draw() {
-    let myButton = document.getElementById("myButton");
-    let mat = new cv.Mat(300, 300, cv.CV_8UC3, new cv.Scalar(255, 255, 255, 255));
+function drawing() {
+  let mat=new cv.Mat(300, 300, cv.CV_8UC3, new cv.Scalar(255, 255, 255, 255));
+  let centers=[new cv.Point(220,170),new cv.Point(80,170),new cv.Point(150,60)];
+  let angles=[300.0,0.0,120.0];
+  let colors=[new cv.Scalar(0,0,255,255),new cv.Scalar(0,255,0,255),
+    new cv.Scalar(255,0,0,255)];
 
-    cv.ellipse(mat, new cv.Point(220, 170), new cv.Size(50, 50), 300.0, 0.0, 300.0, new cv.Scalar(0, 0, 255, 255), cv.FILLED);
-    cv.ellipse(mat, new cv.Point(80, 170), new cv.Size(50, 50), 0.0, 0.0, 300.0, new cv.Scalar(0, 255, 0, 255), cv.FILLED);
-    cv.ellipse(mat, new cv.Point(150, 60), new cv.Size(50, 50), 120.0, 0.0, 300.0, new cv.Scalar(255, 0, 0, 255), cv.FILLED);
+  for (i=0;i<3;i++) {
+    drawEllipse(mat,centers[i],angles[i],colors[i]);
+  };
 
-    cv.circle(mat, new cv.Point(220, 170), 25, new cv.Scalar(255, 255, 255, 255), cv.FILLED);
-    cv.circle(mat, new cv.Point(80, 170), 25, new cv.Scalar(255, 255, 255, 255), cv.FILLED);
-    cv.circle(mat, new cv.Point(150, 60), 25, new cv.Scalar(255, 255, 255, 255), cv.FILLED);
+  cv.putText(mat, "OpenCV", new cv.Point(30, 270), cv.FONT_HERSHEY_PLAIN, 4,
+  new cv.Scalar(0, 0, 0, 255), 5);
+  
+  cv.imshow("canvasOutput", mat);
+  mat.delete();
+};
 
-    cv.putText(mat, "OpenCV", new cv.Point(30, 270), cv.FONT_HERSHEY_PLAIN, 4, new cv.Scalar(0, 0, 0, 255), 5)
-    cv.imshow('canvasOutput', mat);
-
-    mat.delete();
+function drawEllipse(img,center,angle,color) {
+    cv.ellipse(img,center,new cv.Size(50,50),angle,0.0,300.0,color,cv.FILLED);
+    cv.ellipse(img,center,new cv.Size(25,25),0.0,0.0,360,
+    new cv.Scalar(255,255,255,255),cv.FILLED);
 };
 
 function onOpenCvReady() {
-    document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
-    cv["onRuntimeInitialized"] = () => {
-    document.getElementById("myButton").disabled = false;
+    document.getElementById("status").innerHTML="OpenCV.js is ready.";
+    cv["onRuntimeInitialized"]=()=>{
+    document.getElementById("myButton").disabled=false;
     }
 }
 </script>
 
-<script async src = "opencv.js" onload = "onOpenCvReady();" type = "text/javascript">
+<script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript">
 </script>
-
 </body>
-
 </html>
