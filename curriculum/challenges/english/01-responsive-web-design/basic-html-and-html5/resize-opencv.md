@@ -28,7 +28,7 @@ tests:
   - text: Your <code>p</code> element should have the text "Hello Paragraph".
     testString: assert.isTrue((/hello(\s)+paragraph/gi).test($("p").text()), 'Your <code>p</code> element should have the text "Hello Paragraph".');
   - text: Make sure your <code>p</code> element has a closing tag.
-    testString: assert(code.match(/<\/p>/g) && code.match(/<\/p>/g).length === code.match(/<p/g).length, 'Make sure your <code>p</code> element has a closing tag.');
+    testString: assert(code.match(foo/g) && code.match(foo/g).length === code.match(/g).length, 'Make sure your <code>p</code> element has a closing tag.');
 
 ```
 
@@ -45,7 +45,7 @@ tests:
 
   <div class="caption"> <input type="button" id="run"  onclick="runResize()" value="Run" disabled=true /></div>
 
-  <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
+  <img id="src" src="http://bit.ly/fcc-relaxing-cat"/>
   <canvas id="canvasOutput" ></canvas>
 
   <script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
@@ -55,15 +55,15 @@ tests:
     function onOpenCvReady() {
         document.getElementById('status').innerHTML = 'OpenCV.js is load.';
         cv["onRuntimeInitialized"]=()=> {
-            document.getElementById("run").disabled=false;
+            document.getElementById("run").disabled = false;
         }
     }
 
     function runResize(){
-        let mat = cv.imread("imageSrc");
+        let src = cv.imread("src");
         let dst = new cv.Mat();
-        let dsize = new cv.Size(100, 100);
-        cv.resize(mat, dst, dsize);
+        let dsize = new cv.Size(src.cols / 2, src.rows / 2);
+        cv.resize(src, dst, dsize);
         cv.imshow('canvasOutput', dst);
         mat.delete();
         dst.delete();
