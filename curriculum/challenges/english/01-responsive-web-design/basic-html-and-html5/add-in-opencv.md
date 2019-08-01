@@ -56,13 +56,9 @@ tests:
 function addW() {
     let dst = new cv.Mat();
     let mat1 = new cv.Mat(281, 281, cv.CV_8UC3, new cv.Scalar(0, 0, 255, 255));
-    console.log(1);
     let mat2 = new cv.Mat(281, 281, cv.CV_8UC3, new cv.Scalar(255, 0, 0, 255));
-    console.log(2);
     cv.addWeighted(mat1,0.5,mat2,0.5,0.0,dst);
-    console.log(3);
     cv.imshow('canvasOutput',dst);
-    console.log(4);
     mat1.delete();
     mat2.delete();
     dst.delete();
