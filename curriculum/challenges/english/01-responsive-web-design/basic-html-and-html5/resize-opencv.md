@@ -23,8 +23,8 @@ Create a <code>p</code> element below your <code>h2</code> element, and give it 
 
 ```yml
 tests:
-  - text: Create a <code>p</code> element.
-    testString: assert(($("p").length > 0), 'Create a valid <code>p</code> element.');
+  - text: Test
+    testString: assert(code.match(/\run///resive/), Test');
   - text: Your <code>p</code> element should have the text "Hello Paragraph".
     testString: assert.isTrue((/hello(\s)+paragraph/gi).test($("p").text()), 'Your <code>p</code> element should have the text "Hello Paragraph".');
   - text: Make sure your <code>p</code> element has a closing tag.
@@ -65,7 +65,7 @@ tests:
         let dsize = new cv.Size(src.cols / 2, src.rows / 2);
         cv.resize(src, dst, dsize);
         cv.imshow('canvasOutput', dst);
-        mat.delete();
+        src.delete();
         dst.delete();
     }
   </script> 
