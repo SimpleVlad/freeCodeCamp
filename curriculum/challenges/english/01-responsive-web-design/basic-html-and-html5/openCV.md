@@ -72,7 +72,7 @@ tests:
     }
   </script>
     
-    <script async src = "https://docs.opencv.org/master/opencv.js" onload = "onOpenCvReady();" type = "text/javascript">
+    <script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript">
     </script>  
 ```
 
