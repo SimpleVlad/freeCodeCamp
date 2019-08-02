@@ -58,10 +58,10 @@ brightness:<input type="range" min="0" max="100" step="1" value="50" id="brightn
 <script type="text/javascript">
 
 function contrast() {
-  let mat = cv.imread("imageSrc"));
+  let mat = cv.imread("imageSrc");
   let dst = new cv.Mat();
-  let cont = Number("contrast".value);
-  let brig = Number("brightness".value);
+  let cont = Number(document.getElementById("contrast").value);
+  let brig = Number(document.getElementById("brightness").value);
 
   cv.convertScaleAbs(mat, dst, cont, brig);
 
