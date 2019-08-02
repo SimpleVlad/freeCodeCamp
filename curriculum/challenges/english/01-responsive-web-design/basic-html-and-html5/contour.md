@@ -56,26 +56,26 @@ tests:
 <script type="text/javascript">
 
 function contour() {
-    let src = cv.imread("imageSrc");
-    let edged = new cv.Mat.zeros(src.rows, src.cols, cv.CV_8UC3);
-    let contours = new cv.MatVector();
-    let hierarchy = new cv.Mat();
-    cv.Canny(src, edged, 100, 200);
-    cv.findContours(edged, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
-    cv.drawContours(src, contours, -1, new cv.Scalar(0, 255, 0, 255));
-    cv.imshow("canvasOutput", src);
-    src.delete();
-    edged.delete();
-    contours.delete();
-    hierarchy.delete();
+  let mat = cv.imread("imageSrc");
+  let edged = new cv.Mat();
+  let contours = new cv.MatVector();
+  let hierarchy = new cv.Mat();
 
+  cv.Canny(mat, edged, 100, 200);
+
+  cv.findContours(edged, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
+
+  cv.drawContours(mat, contours, -1, new cv.Scalar(0, 255, 0, 255));
+
+  cv.imshow("canvasOutput", mat);
+  edged.delete();
+  contours.delete();
+  hierarchy.delete();
 };
 
 function onOpenCvReady() {
-    document.getElementById("status").innerHTML = "OpenCV.js is ready.";
-    cv["onRuntimeInitialized"]=()=> {
-        document.getElementById("myButton").disabled = false;
-    }
+  document.getElementById("status").innerHTML = "OpenCV.js is ready.";
+  cv["onRuntimeInitialized"] = () => {document.getElementById("myButton").disabled = false;}
 }
 </script>
 
