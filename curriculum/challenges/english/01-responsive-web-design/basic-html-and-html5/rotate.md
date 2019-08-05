@@ -46,8 +46,8 @@ tests:
 ```html
 <h2>OpenCV.js</h2>
 <p id="status">OpenCV.js is loading...</p>
-<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
-<input type="button" id="myButton" onclick="contrast()" value="Run" disabled=true/>
+<img id="imgSrc" src="http://bit.ly/fcc-relaxing-cat"/>
+<input type="button" id="myButton" onclick="rotate()" value="Run" disabled=true/>
 <canvas id="canvasOutput" ></canvas>
 
 
@@ -56,7 +56,7 @@ tests:
 <script type="text/javascript">
 
 function rotate() {
-  let src = cv.imread("img");
+  let src = cv.imread("imgSrc");
   let dst = new cv.Mat();
   // Rotation function with following varieties of arguments:
   // cv.ROTATE_90_CLOCKWISE
@@ -65,6 +65,7 @@ function rotate() {
   cv.rotate(src, dst, cv.ROTATE_90_CLOCKWISE);
   cv.imshow("canvasOutput", dst);
   src.delete();
+  dst.delete();
 };
 
 function onOpenCvReady() {
