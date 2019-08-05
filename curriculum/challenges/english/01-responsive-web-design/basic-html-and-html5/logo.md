@@ -1,5 +1,5 @@
 ---
-id:
+id: 5d47f9e144cec26fdb0a6365
 title: OpenCV_logo
 challengeType: 0
 videoUrl:
@@ -30,7 +30,7 @@ I don't know what is happaning
 ```yml
 tests:
    - text: IDN
-     testString: assert($("draw").length) ;
+     testString: console.log(1) ;
   # - text: You test
   #   testString:  assert(imrid("imageSrc").test(draw()));
 ```
@@ -46,13 +46,8 @@ tests:
 ```html
 <h2>OpenCV.js</h2>
 <p id="status">OpenCV.js is loading...</p>
-<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
-<input type="button" id="myButton" onclick="contrast()" value="Run" disabled=true/>
+<input type="button" id="myButton" onclick="draw()" value="Run" disabled=true/>
 <canvas id="canvasOutput" ></canvas>
-
-
-
-
 <script type="text/javascript">
 
 function draw() {
@@ -77,9 +72,7 @@ function onOpenCvReady() {
   cv["onRuntimeInitialized"] = () => {document.getElementById("myButton").disabled = false;}
 }
 </script>
-
-<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript">
-</script>
+<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
 ```
 
 </div>

@@ -30,7 +30,7 @@ I don't know what is happaning
 ```yml
 tests:
    - text: IDN
-     testString: assert($("draw").length) ; 
+     testString: console.log(1); 
   # - text: You test
   #   testString:  assert(imrid("imageSrc").test(draw()));
 ```
