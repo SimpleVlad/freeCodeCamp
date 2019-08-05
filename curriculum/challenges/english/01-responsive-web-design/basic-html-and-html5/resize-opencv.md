@@ -23,14 +23,9 @@ Create a <code>p</code> element below your <code>h2</code> element, and give it 
 
 ```yml
 tests:
-  - text: Test
-    testString: assert(code.match(/\run///resive/), Test');
-  - text: Your <code>p</code> element should have the text "Hello Paragraph".
-    testString: assert.isTrue((/hello(\s)+paragraph/gi).test($("p").text()), 'Your <code>p</code> element should have the text "Hello Paragraph".');
-  - text: Make sure your <code>p</code> element has a closing tag.
-    testString: assert(code.match(foo/g) && code.match(foo/g).length === code.match(/g).length, 'Make sure your <code>p</code> element has a closing tag.');
-
-```
+  - text:  <code>cv.resize</code> is not initialized
+    testString: assert(code.match(/cv.resize/g),'<code>cv.resize</code> is not in initializes'); 
+ ```
 
 </section>
 

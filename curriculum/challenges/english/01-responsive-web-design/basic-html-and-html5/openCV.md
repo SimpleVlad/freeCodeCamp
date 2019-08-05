@@ -29,12 +29,16 @@ I don't know what is happaning
 
 ```yml
 tests:
-   - text: IDN
-     testString: console.log(1); 
-  # - text: You test
-  #   testString:  assert(imrid("imageSrc").test(draw()));
+   - text: <code>cv.imread</code> is not initialized
+     testString: assert(code.match(/cv.imread/g),'<code>cv.imread</code> is not in initializes'); 
+   - text: <code>cv.cvtColor()</code> is not initialized
+     testString: assert(code.match(/cv.cvtColor/g),'<code>cv.cvtColor</code> is not in initializes'); 
+   - text: <code>COLOR_RGBA2GRAY</code> is not argument in <code>cv.cvtColor()</code>
+     testString:  assert(code.match(/COLOR_RGBA2GRAY/g),'<code>COLOR_RGBA2GRAY</code> is not argument in <code>cv.cvtColor()</code>');
+   - text: <code>cv.imshow</code> is not initialized
+     testString: assert(code.match(/cv.imshow/g),'<code>cv.imshow</code> is not in initializes'); 
+  
 ```
-  <!-- testString: assert.isTrue((/hello(\s)+world/gi).test($('h1').text()), 'Your <code>h1</code> element should have the text "Hello World".'); -->
 </section>
 
 ## Challenge Seed
@@ -44,16 +48,7 @@ tests:
 <div id='html-seed'>
 
 ```html
- <h2>OpenCV.js</h2>
- <input type="button" id="runSampl" onclick="draw()" value="Run test" disabled=true />
- <p id="status">OpenCV.js is loading...</p>
- <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat" /> 
- <canvas id="canvasOutput" >
- </canvas>
- 
- 
-
- <script type="text/javascript">
+<script>
     
     function draw() {
       let src = cv.imread("imageSrc");
@@ -63,7 +58,6 @@ tests:
       src.delete();
       dst.delete();
     };
-    
     function onOpenCvReady() {
       document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
       cv["onRuntimeInitialized"]=()=> {
@@ -71,9 +65,15 @@ tests:
       }
     }
   </script>
-    
+   
     <script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript">
     </script>  
+ <h2>OpenCV.js</h2>
+ <input type="button" id="runSampl" onclick="draw()" value="Run test" disabled=true />
+ <p id="status">OpenCV.js is loading...</p>
+ <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat" /> 
+ <canvas id="canvasOutput" >
+ </canvas>
 ```
 
 </div>
