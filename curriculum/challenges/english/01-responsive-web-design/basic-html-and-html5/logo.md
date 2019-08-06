@@ -29,12 +29,11 @@ I don't know what is happaning
 
 ```yml
 tests:
-   - text: IDN
-     testString: console.log(1) ;
-  # - text: You test
-  #   testString:  assert(imrid("imageSrc").test(draw()));
+    - text:  Use <code>cv.ellipse</code> to drow ellips on image
+      testString: assert(code.match(/ellipse/g),'Use <code>cv.ellipse</code> to drow ellips image'); 
+    - text:  Use <code>cv.circle</code> to drow ellips on image
+      testString: assert(code.match(/circle/g),'Use <code>cv.circle</code> to drow ellips image'); 
 ```
-  <!-- testString: assert.isTrue((/hello(\s)+world/gi).test($('h1').text()), 'Your <code>h1</code> element should have the text "Hello World".'); -->
 </section>
 
 ## Challenge Seed

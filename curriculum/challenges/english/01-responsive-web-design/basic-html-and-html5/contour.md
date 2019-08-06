@@ -29,7 +29,7 @@ I don't know what is happaning
 
 ```yml
 tests:
-   - text: <code>cv.Canny</code> is not initialized
+   - text: You must have <code>cv.Canny</code> in your code
      testString: assert(code.match(/cv.Canny/g),'<code>cv.Canny</code> is not in initializes');
    - text: You need to use a <code>cv.findContours</code> to find contur on image
      testString: assert(code.match(/cv.findContours/g),' You need to use a <code>cv.findContours</code> to find contur on image');
