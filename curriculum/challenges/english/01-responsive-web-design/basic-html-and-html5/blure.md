@@ -29,8 +29,8 @@ I don't know what is happaning
 
 ```yml
 tests:
-   - text: IDN
-     testString: assert($("draw").length) ; 
+   - text:  You must have <code>cv.blur</code> in your code
+     testString: assert(code.match(/cv.blur/g),'You must have <code>cv.blur</code> in your code'); 
   # - text: You test
   #   testString:  assert(imrid("imageSrc").test(draw()));
 ```

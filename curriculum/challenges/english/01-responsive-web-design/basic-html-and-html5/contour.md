@@ -2,7 +2,7 @@
 id: 5d4299689da0aed2a684435c
 title: Contour
 challengeType: 0
-videoUrl: 
+videoUrl:
 ---
 
 ## Description
@@ -29,12 +29,14 @@ I don't know what is happaning
 
 ```yml
 tests:
-   - text: IDN
-     testString: assert($("draw").length) ; 
-  # - text: You test
-  #   testString:  assert(imrid("imageSrc").test(draw()));
+   - text: <code>cv.Canny</code> is not initialized
+     testString: assert(code.match(/cv.Canny/g),'<code>cv.Canny</code> is not in initializes');
+   - text: <code>cv.findContours</code> initialization
+     testString: assert(code.match(/cv.findContours/g),'<code>cv.findContours</code> is not in initializes');
+   - text: <code>cv.drawContours</code> initialization
+     testString: assert(code.match(/cv.drawContours/g),'<code>cv.drawContours</code> is not in initializes');
 ```
-  <!-- testString: assert.isTrue((/hello(\s)+world/gi).test($('h1').text()), 'Your <code>h1</code> element should have the text "Hello World".'); -->
+
 </section>
 
 ## Challenge Seed
@@ -49,8 +51,8 @@ tests:
 <p id="status">OpenCV.js is loading...</p>
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>    
 <canvas id="canvasOutput" ></canvas>
-            
-        
+
+
 
 
 <script type="text/javascript">
@@ -93,7 +95,7 @@ function onOpenCvReady() {
 <section id='solution'>
 
 ```html
- 
+
 ```
 
 </section>

@@ -29,12 +29,9 @@ I don't know what is happaning
 
 ```yml
 tests:
-   - text: IDN
-     testString: assert($("draw").length) ;
-  # - text: You test
-  #   testString:  assert(imrid("imageSrc").test(draw()));
+   - text:  <code>cv.convertScaleAbs</code> is not initialized
+     testString: assert(code.match(/cv.convertScaleAbs/g),'<code>cv.convertScaleAbs</code> is not in initializes');
 ```
-  <!-- testString: assert.isTrue((/hello(\s)+world/gi).test($('h1').text()), 'Your <code>h1</code> element should have the text "Hello World".'); -->
 </section>
 
 ## Challenge Seed
