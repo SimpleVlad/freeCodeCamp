@@ -29,8 +29,8 @@ I don't know what is happaning
 
 ```yml
 tests:
-   - text:  <code>cv.convertScaleAbs</code> is not initialized
-     testString: assert(code.match(/cv.convertScaleAbs/g),'<code>cv.convertScaleAbs</code> is not in initializes');
+   - text: Use <code>cv.convertScaleAbs</code> to change contrast and brightness
+     testString: assert(code.match(/cv.convertScaleAbs/g),' Use <code>cv.convertScaleAbs</code> to change contrast and brightness');
 ```
 </section>
 

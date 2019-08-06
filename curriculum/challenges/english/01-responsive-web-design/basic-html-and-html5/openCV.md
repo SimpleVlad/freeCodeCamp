@@ -29,14 +29,14 @@ I don't know what is happaning
 
 ```yml
 tests:
-   - text: <code>cv.imread</code> is not initialized
-     testString: assert(code.match(/cv.imread/g),'<code>cv.imread</code> is not in initializes'); 
-   - text: <code>cv.cvtColor()</code> is not initialized
-     testString: assert(code.match(/cv.cvtColor/g),'<code>cv.cvtColor</code> is not in initializes'); 
+   - text: Use <code>cv.imread</code> to read image and create a matix of image
+     testString: assert(code.match(/cv.imread/g),'Use <code>cv.imread</code> to read image and create a matix of image'); 
+   - text: Use <code>cv.cvtColor()</code> to use filters 
+     testString: assert(code.match(/cv.cvtColor/g),'Use <code>cv.cvtColor()</code> to use filters '); 
    - text: <code>COLOR_RGBA2GRAY</code> is not argument in <code>cv.cvtColor()</code>
      testString:  assert(code.match(/COLOR_RGBA2GRAY/g),'<code>COLOR_RGBA2GRAY</code> is not argument in <code>cv.cvtColor()</code>');
-   - text: <code>cv.imshow</code> is not initialized
-     testString: assert(code.match(/cv.imshow/g),'<code>cv.imshow</code> is not in initializes'); 
+   - text: Use <code>cv.imread</code> to input image
+     testString: assert(code.match(/cv.imshow/g),'Use <code>cv.imread</code> to input image'); 
   
 ```
 </section>

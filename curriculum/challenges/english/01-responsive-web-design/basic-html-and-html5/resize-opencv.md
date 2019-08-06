@@ -23,8 +23,8 @@ Create a <code>p</code> element below your <code>h2</code> element, and give it 
 
 ```yml
 tests:
-  - text:  <code>cv.resize</code> is not initialized
-    testString: assert(code.match(/cv.resize/g),'<code>cv.resize</code> is not in initializes'); 
+  - text: You must have <code>cv.resize</code> in your code to resize image
+    testString: assert(code.match(/cv.resize/g),'You must have <code>cv.resize</code> in your code to resize image'); 
  ```
 
 </section>

@@ -31,10 +31,10 @@ I don't know what is happaning
 tests:
    - text: <code>cv.Canny</code> is not initialized
      testString: assert(code.match(/cv.Canny/g),'<code>cv.Canny</code> is not in initializes');
-   - text: <code>cv.findContours</code> initialization
-     testString: assert(code.match(/cv.findContours/g),'<code>cv.findContours</code> is not in initializes');
-   - text: <code>cv.drawContours</code> initialization
-     testString: assert(code.match(/cv.drawContours/g),'<code>cv.drawContours</code> is not in initializes');
+   - text: You need to use a <code>cv.findContours</code> to find contur on image
+     testString: assert(code.match(/cv.findContours/g),' You need to use a <code>cv.findContours</code> to find contur on image');
+   - text: You need to use a <code>cv.drawContours</code> to draw contur
+     testString: assert(code.match(/cv.drawContours/g),'You need to use a <code>cv.drawContours</code> to draw contur');
 ```
 
 </section>
