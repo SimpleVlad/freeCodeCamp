@@ -47,30 +47,23 @@ tests:
 <div id='html-seed'>
 
 ```html
+<script async src="https://docs.opencv.org/master/opencv.js" 
+        onload='cv["onRuntimeInitialized"]=()=> { draw() }' type="text/javascript">
+</script>
+
 <script>
-    function draw() {
-      let src = cv.imread("imageSrc");
-      let dst = new cv.Mat();  
-
-      cv.imshow('canvasOutput', dst);
-      src.delete();
-      dst.delete();
-    };
-
-    function onOpenCvReady() {
-      document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
-      cv["onRuntimeInitialized"]=()=> {
-        document.getElementById("runSampl").disabled = false;
-      }
-    }
+  function draw() {
+    let src = cv.imread("imageSrc");
+    let dst = new cv.Mat();  
+    cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY);
+    cv.imshow('canvasOutput', dst);
+    src.delete();
+    dst.delete();
+  };
 </script>
 
-<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript">
-</script>
 
 <h2>OpenCV.js</h2>
-<input type="button" id="runSampl" onclick="draw()" value="Run test" disabled=true />
-<p id="status">OpenCV.js is loading...</p>
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat" />
 <canvas id="canvasOutput" >
 </canvas>
@@ -82,31 +75,24 @@ tests:
 <section id='solution'>
 
 ```html
+<script async src="https://docs.opencv.org/master/opencv.js" 
+        onload='cv["onRuntimeInitialized"]=()=> { draw() }' type="text/javascript">
+</script>
+
 <script>
-    function draw() {
-      let src = cv.imread("imageSrc");
-      let dst = new cv.Mat();  
-      cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY);
-      cv.imshow('canvasOutput', dst);
-      src.delete();
-      dst.delete();
-    };
-
-    function onOpenCvReady() {
-      document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
-      cv["onRuntimeInitialized"]=()=> {
-        document.getElementById("runSampl").disabled = false;
-      }
-    }
+  function draw() {
+    let src = cv.imread("imageSrc");
+    let dst = new cv.Mat();  
+    cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY);
+    cv.imshow('canvasOutput', dst);
+    src.delete();
+    dst.delete();
+  };
 </script>
 
-<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript">
-</script>
- 
+
 <h2>OpenCV.js</h2>
-<input type="button" id="runSampl" onclick="draw()" value="Run test" disabled=true />
-<p id="status">OpenCV.js is loading...</p>
-<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat" /> 
+<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat" />
 <canvas id="canvasOutput" >
 </canvas>
 ```

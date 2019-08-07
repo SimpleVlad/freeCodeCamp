@@ -42,15 +42,10 @@ tests:
 <div id='html-seed'>
 
 ```html
-<script async src = "https://docs.opencv.org/master/opencv.js" onload = "onOpenCvReady();" type = "text/javascript"></script>
-<script type = "text/javascript">
-
-  function onOpenCvReady() {
-    document.getElementById('status').innerHTML = 'OpenCV.js is load.';
-    cv["onRuntimeInitialized"]=()=> {
-       document.getElementById("run").disabled=false;
-    }
-  }
+<script async src="https://docs.opencv.org/master/opencv.js" 
+        onload='cv["onRuntimeInitialized"]=()=> { runBlur() }' type="text/javascript">
+</script>
+<script>
   function runBlur() {
     let src = cv.imread('imageSrc');
     let dst = new cv.Mat();
@@ -62,12 +57,7 @@ tests:
   }
 </script>
 
-
 <h2>Blure OpenCV.js</h2>
-<p id="status">OpenCV.js is loading...</p>
-
-<div> <input type="button" id="run"  onclick="runBlur()" value="Run" disabled=true /></div>
-
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
 <canvas id="canvasOutput" ></canvas>
 ```
@@ -81,15 +71,10 @@ tests:
 <section id='solution'>
 
 ```html
- <script async src = "https://docs.opencv.org/master/opencv.js" onload = "onOpenCvReady();" type = "text/javascript"></script>
-<script type = "text/javascript">
-
-  function onOpenCvReady() {
-    document.getElementById('status').innerHTML = 'OpenCV.js is load.';
-    cv["onRuntimeInitialized"]=()=> {
-       document.getElementById("run").disabled=false;
-    }
-  }
+<script async src="https://docs.opencv.org/master/opencv.js" 
+        onload='cv["onRuntimeInitialized"]=()=> { runBlur() }' type="text/javascript">
+</script>
+<script>
   function runBlur() {
     let src = cv.imread('imageSrc');
     let dst = new cv.Mat();
@@ -101,12 +86,7 @@ tests:
   }
 </script>
 
-
 <h2>Blure OpenCV.js</h2>
-<p id="status">OpenCV.js is loading...</p>
-
-<div> <input type="button" id="run"  onclick="runBlur()" value="Run" disabled=true /></div>
-
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
 <canvas id="canvasOutput" ></canvas>
 ```

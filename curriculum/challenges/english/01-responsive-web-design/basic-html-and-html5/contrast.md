@@ -30,7 +30,7 @@ I don't know what is happaning
 ```yml
 tests:
    - text: Use <code>cv.convertScaleAbs</code> to change contrast and brightness
-     testString: assert(code.match(/cv.convertScaleAbs/g),' Use <code>cv.convertScaleAbs</code> to change contrast and brightness');
+     testString: assert(code.match(/cv.convertScaleAbs()/g),' Use <code>cv.convertScaleAbs</code> to change contrast and brightness');
 ```
 </section>
 
@@ -41,13 +41,8 @@ tests:
 <div id='html-seed'>
 
 ```html
-<h2>OpenCV.js</h2>
-<p id="status">OpenCV.js is loading...</p>
-<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
-<input type="button" id="myButton" onclick="contrast()" value="Run" disabled=true/>
-contrast:<input type="range" min="1.0" max="3.0" step="0.1" value="1.5" id="contrast" onchange="contrast()">
-brightness:<input type="range" min="0" max="100" step="1" value="50" id="brightness" onchange="contrast()">
-<canvas id="canvasOutput" ></canvas>
+<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { contrast() }'  type="text/javascript">
+</script>
 
 <script type="text/javascript">
 
@@ -62,14 +57,13 @@ function contrast() {
   dst.delete();
 };
 
-function onOpenCvReady() {
-  document.getElementById("status").innerHTML = "OpenCV.js is ready.";
-  cv["onRuntimeInitialized"] = () => {document.getElementById("myButton").disabled = false;}
-}
 </script>
 
-<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript">
-</script>
+<h2>OpenCV.js</h2>
+<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
+contrast:<input type="range" min="1.0" max="3.0" step="0.1" value="1.5" id="contrast" onchange="contrast()">
+brightness:<input type="range" min="0" max="100" step="1" value="50" id="brightness" onchange="contrast()">
+<canvas id="canvasOutput" ></canvas>
 ```
 
 </div>
@@ -80,13 +74,8 @@ function onOpenCvReady() {
 <section id='solution'>
 
 ```html
-<h2>OpenCV.js</h2>
-<p id="status">OpenCV.js is loading...</p>
-<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
-<input type="button" id="myButton" onclick="contrast()" value="Run" disabled=true/>
-contrast:<input type="range" min="1.0" max="3.0" step="0.1" value="1.5" id="contrast" onchange="contrast()">
-brightness:<input type="range" min="0" max="100" step="1" value="50" id="brightness" onchange="contrast()">
-<canvas id="canvasOutput" ></canvas>
+<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { contrast() }'  type="text/javascript">
+</script>
 
 <script type="text/javascript">
 
@@ -101,14 +90,13 @@ function contrast() {
   dst.delete();
 };
 
-function onOpenCvReady() {
-  document.getElementById("status").innerHTML = "OpenCV.js is ready.";
-  cv["onRuntimeInitialized"] = () => {document.getElementById("myButton").disabled = false;}
-}
 </script>
 
-<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript">
-</script>
+<h2>OpenCV.js</h2>
+<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
+contrast:<input type="range" min="1.0" max="3.0" step="0.1" value="1.5" id="contrast" onchange="contrast()">
+brightness:<input type="range" min="0" max="100" step="1" value="50" id="brightness" onchange="contrast()">
+<canvas id="canvasOutput" ></canvas>
 ```
 
 </section>
