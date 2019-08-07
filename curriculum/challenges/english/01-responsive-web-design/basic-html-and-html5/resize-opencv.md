@@ -35,41 +35,39 @@ tests:
 <div id='html-seed'>
 
 ```html
-  <h2>Blure OpenCV.js</h2>
-  <p id="status">OpenCV.js is loading...</p>
+<h2>Blure OpenCV.js</h2>
+<p id="status">OpenCV.js is loading...</p>
 
-  <div class="caption"> <input type="button" id="run"  onclick="runResize()" value="Run" disabled=true /></div>
+<div class="caption"> <input type="button" id="run"  onclick="runResize()" value="Run" disabled=true /></div>
 
-  <img id="src" src="http://bit.ly/fcc-relaxing-cat"/>
-  <canvas id="canvasOutput" ></canvas>
+<img id="src" src="http://bit.ly/fcc-relaxing-cat"/>
+<canvas id="canvasOutput" ></canvas>
 
-  <script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 
-    function onOpenCvReady() {
-        document.getElementById('status').innerHTML = 'OpenCV.js is load.';
-        cv["onRuntimeInitialized"]=()=> {
-            document.getElementById("run").disabled = false;
-        }
+  function onOpenCvReady() {
+    document.getElementById('status').innerHTML = 'OpenCV.js is load.';
+    cv["onRuntimeInitialized"]=()=> {
+      document.getElementById("run").disabled = false;
     }
+  }
 
-    function runResize(){
-        let src = cv.imread("src");
-        let dst = new cv.Mat();
-        let dsize = new cv.Size(src.cols / 2, src.rows / 2);
-        cv.resize(src, dst, dsize);
-        cv.imshow('canvasOutput', dst);
-        src.delete();
-        dst.delete();
-    }
+  function runResize(){
+    let src = cv.imread("src");
+    let dst = new cv.Mat();
+    let dsize = new cv.Size(src.cols / 2, src.rows / 2);
+    cv.resize(src, dst, dsize);
+    cv.imshow('canvasOutput', dst);
+    src.delete();
+    dst.delete();
+  }
   </script> 
 
 ```
 
 </div>
-
-
 
 </section>
 
@@ -77,7 +75,34 @@ tests:
 <section id='solution'>
 
 ```html
+<h2>Blure OpenCV.js</h2>
+<p id="status">OpenCV.js is loading...</p>
 
+<div class="caption"> <input type="button" id="run"  onclick="runResize()" value="Run" disabled=true /></div>
+
+<img id="src" src="http://bit.ly/fcc-relaxing-cat"/>
+<canvas id="canvasOutput" ></canvas>
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+  function onOpenCvReady() {
+    document.getElementById('status').innerHTML = 'OpenCV.js is load.';
+    cv["onRuntimeInitialized"]=()=> {
+      document.getElementById("run").disabled = false;
+    }
+  }
+
+  function runResize(){
+    let src = cv.imread("src");
+    let dst = new cv.Mat();
+    let dsize = new cv.Size(src.cols / 2, src.rows / 2);
+    cv.resize(src, dst, dsize);
+    cv.imshow('canvasOutput', dst);
+    src.delete();
+    dst.delete();
+  }
 ```
 
 </section>

@@ -49,9 +49,6 @@ contrast:<input type="range" min="1.0" max="3.0" step="0.1" value="1.5" id="cont
 brightness:<input type="range" min="0" max="100" step="1" value="50" id="brightness" onchange="contrast()">
 <canvas id="canvasOutput" ></canvas>
 
-
-
-
 <script type="text/javascript">
 
 function contrast() {
@@ -59,9 +56,7 @@ function contrast() {
   let dst = new cv.Mat();
   let cont = Number(document.getElementById("contrast").value);
   let brig = Number(document.getElementById("brightness").value);
-
   cv.convertScaleAbs(mat, dst, cont, brig);
-
   cv.imshow("canvasOutput", dst);
   mat.delete();
   dst.delete();
@@ -79,15 +74,41 @@ function onOpenCvReady() {
 
 </div>
 
-
-
 </section>
 
 ## Solution
 <section id='solution'>
 
 ```html
+<h2>OpenCV.js</h2>
+<p id="status">OpenCV.js is loading...</p>
+<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
+<input type="button" id="myButton" onclick="contrast()" value="Run" disabled=true/>
+contrast:<input type="range" min="1.0" max="3.0" step="0.1" value="1.5" id="contrast" onchange="contrast()">
+brightness:<input type="range" min="0" max="100" step="1" value="50" id="brightness" onchange="contrast()">
+<canvas id="canvasOutput" ></canvas>
 
+<script type="text/javascript">
+
+function contrast() {
+  let mat = cv.imread("imageSrc");
+  let dst = new cv.Mat();
+  let cont = Number(document.getElementById("contrast").value);
+  let brig = Number(document.getElementById("brightness").value);
+  cv.convertScaleAbs(mat, dst, cont, brig);
+  cv.imshow("canvasOutput", dst);
+  mat.delete();
+  dst.delete();
+};
+
+function onOpenCvReady() {
+  document.getElementById("status").innerHTML = "OpenCV.js is ready.";
+  cv["onRuntimeInitialized"] = () => {document.getElementById("myButton").disabled = false;}
+}
+</script>
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript">
+</script>
 ```
 
 </section>

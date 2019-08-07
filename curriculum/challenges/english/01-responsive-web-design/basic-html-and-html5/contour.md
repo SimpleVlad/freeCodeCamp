@@ -52,9 +52,6 @@ tests:
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>    
 <canvas id="canvasOutput" ></canvas>
 
-
-
-
 <script type="text/javascript">
 
 function contour() {

@@ -44,12 +44,45 @@ tests:
 ## Challenge Seed
 
 <section id='challengeSeed'>
-
 <div id='html-seed'>
 
 ```html
 <script>
-    
+    function draw() {
+      let src = cv.imread("imageSrc");
+      let dst = new cv.Mat();  
+
+      cv.imshow('canvasOutput', dst);
+      src.delete();
+      dst.delete();
+    };
+
+    function onOpenCvReady() {
+      document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
+      cv["onRuntimeInitialized"]=()=> {
+        document.getElementById("runSampl").disabled = false;
+      }
+    }
+</script>
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript">
+</script>
+
+<h2>OpenCV.js</h2>
+<input type="button" id="runSampl" onclick="draw()" value="Run test" disabled=true />
+<p id="status">OpenCV.js is loading...</p>
+<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat" />
+<canvas id="canvasOutput" >
+</canvas>
+```
+</div>
+</section>
+
+## Solution
+<section id='solution'>
+
+```html
+<script>
     function draw() {
       let src = cv.imread("imageSrc");
       let dst = new cv.Mat();  
@@ -58,35 +91,23 @@ tests:
       src.delete();
       dst.delete();
     };
+
     function onOpenCvReady() {
       document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
       cv["onRuntimeInitialized"]=()=> {
         document.getElementById("runSampl").disabled = false;
       }
     }
-  </script>
-   
-    <script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript">
-    </script>  
- <h2>OpenCV.js</h2>
- <input type="button" id="runSampl" onclick="draw()" value="Run test" disabled=true />
- <p id="status">OpenCV.js is loading...</p>
- <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat" /> 
- <canvas id="canvasOutput" >
- </canvas>
-```
+</script>
 
-</div>
-
-
-
-</section>
-
-## Solution
-<section id='solution'>
-
-```html
+<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript">
+</script>
  
+<h2>OpenCV.js</h2>
+<input type="button" id="runSampl" onclick="draw()" value="Run test" disabled=true />
+<p id="status">OpenCV.js is loading...</p>
+<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat" /> 
+<canvas id="canvasOutput" >
+</canvas>
 ```
-
 </section>
