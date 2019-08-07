@@ -31,10 +31,10 @@ I don't know what is happaning
 tests:
    - text: You must have <code>cv.Canny</code> in your code
      testString: assert(code.match(/cv.Canny/g),'<code>cv.Canny</code> is not in initializes');
-   - text: You need to use a <code>cv.findContours</code> to find contur on image
-     testString: assert(code.match(/cv.findContours/g),' You need to use a <code>cv.findContours</code> to find contur on image');
-   - text: You need to use a <code>cv.drawContours</code> to draw contur
-     testString: assert(code.match(/cv.drawContours/g),'You need to use a <code>cv.drawContours</code> to draw contur');
+   - text: You need to use a <code>cv.findContours</code> to find contour on image
+     testString: assert(code.match(/cv.findContours/g),' You need to use a <code>cv.findContours</code> to find contour on image');
+   - text: You need to use a <code>cv.drawContours</code> to draw contour
+     testString: assert(code.match(/cv.drawContours/g),'You need to use a <code>cv.drawContours</code> to draw contour');
 ```
 
 </section>
@@ -95,7 +95,40 @@ function onOpenCvReady() {
 <section id='solution'>
 
 ```html
+<h2>OpenCV.js</h2>        
+<input type="button" id="myButton" onclick= "contour()" value="Run" disabled=true/>
+<p id="status">OpenCV.js is loading...</p>
+<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>    
+<canvas id="canvasOutput" ></canvas>
 
+<script type="text/javascript">
+
+function contour() {
+  let mat = cv.imread("imageSrc");
+  let edged = new cv.Mat();
+  let contours = new cv.MatVector();
+  let hierarchy = new cv.Mat();
+
+  cv.Canny(mat, edged, 100, 200);
+
+  cv.findContours(edged, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
+
+  cv.drawContours(mat, contours, -1, new cv.Scalar(0, 255, 0, 255));
+
+  cv.imshow("canvasOutput", mat);
+  edged.delete();
+  contours.delete();
+  hierarchy.delete();
+};
+
+function onOpenCvReady() {
+  document.getElementById("status").innerHTML = "OpenCV.js is ready.";
+  cv["onRuntimeInitialized"] = () => {document.getElementById("myButton").disabled = false;}
+}
+</script>
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript">
+</script>
 ```
 
 </section>

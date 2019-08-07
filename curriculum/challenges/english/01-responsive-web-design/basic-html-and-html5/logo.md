@@ -30,9 +30,9 @@ I don't know what is happaning
 ```yml
 tests:
     - text:  Use <code>cv.ellipse</code> to drow ellips on image
-      testString: assert(code.match(/ellipse/g),'Use <code>cv.ellipse</code> to drow ellips image'); 
+      testString: assert(code.match(/ellipse/g),'Use <code>cv.ellipse</code> to drow an ellips image'); 
     - text:  Use <code>cv.circle</code> to drow ellips on image
-      testString: assert(code.match(/circle/g),'Use <code>cv.circle</code> to drow ellips image'); 
+      testString: assert(code.match(/circle/g),'Use <code>cv.circle</code> to drow an ellips image'); 
 ```
 </section>
 

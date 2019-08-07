@@ -35,8 +35,8 @@ tests:
      testString: assert(code.match(/cv.cvtColor/g),'Use <code>cv.cvtColor()</code> to use filters '); 
    - text: <code>COLOR_RGBA2GRAY</code> is not argument in <code>cv.cvtColor()</code>
      testString:  assert(code.match(/COLOR_RGBA2GRAY/g),'<code>COLOR_RGBA2GRAY</code> is not argument in <code>cv.cvtColor()</code>');
-   - text: Use <code>cv.imread</code> to input image
-     testString: assert(code.match(/cv.imshow/g),'Use <code>cv.imread</code> to input image'); 
+   - text: Use <code>cv.imshow</code> to input image
+     testString: assert(code.match(/cv.imshow/g),'Use <code>cv.imshow</code> to input image'); 
   
 ```
 </section>
