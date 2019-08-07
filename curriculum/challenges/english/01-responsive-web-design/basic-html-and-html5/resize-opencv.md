@@ -35,7 +35,7 @@ tests:
 <div id='html-seed'>
 
 ```html
-<script async src="https://docs.opencv.org/master/opencv.js" onload= 'cv["onRuntimeInitialized"]=()=> { runResize() }' type="text/javascript"></script>
+
 <script type="text/javascript">
 
   function runResize(){
@@ -47,10 +47,13 @@ tests:
     src.delete();
     dst.delete();
   }
-  </script> 
+</script> 
 
 <img id="src" src="http://bit.ly/fcc-relaxing-cat"/>
+<p></p>
 <canvas id="canvasOutput" ></canvas>
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload= 'cv["onRuntimeInitialized"]=()=> { runResize() }' type="text/javascript"></script>
 ```
 
 </div>
@@ -61,7 +64,6 @@ tests:
 <section id='solution'>
 
 ```html
-<script async src="https://docs.opencv.org/master/opencv.js" onload= 'cv["onRuntimeInitialized"]=()=> { runResize() }' type="text/javascript"></script>
 <script type="text/javascript">
 
   function runResize(){
@@ -73,10 +75,13 @@ tests:
     src.delete();
     dst.delete();
   }
-  </script> 
+</script> 
 
 <img id="src" src="http://bit.ly/fcc-relaxing-cat"/>
+<p></p>
 <canvas id="canvasOutput" ></canvas>
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload= 'cv["onRuntimeInitialized"]=()=> { runResize() }' type="text/javascript"></script>
 ```
 
 </section>

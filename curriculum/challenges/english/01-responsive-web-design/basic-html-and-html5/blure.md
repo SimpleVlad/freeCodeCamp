@@ -42,9 +42,6 @@ tests:
 <div id='html-seed'>
 
 ```html
-<script async src="https://docs.opencv.org/master/opencv.js" 
-        onload='cv["onRuntimeInitialized"]=()=> { runBlur() }' type="text/javascript">
-</script>
 <script>
   function runBlur() {
     let src = cv.imread('imageSrc');
@@ -57,9 +54,12 @@ tests:
   }
 </script>
 
-<h2>Blure OpenCV.js</h2>
+<h2>Blur OpenCV.js</h2>
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
+<p></p>
 <canvas id="canvasOutput" ></canvas>
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { runBlur() }' type="text/javascript"></script>
 ```
 
 </div>
@@ -71,9 +71,6 @@ tests:
 <section id='solution'>
 
 ```html
-<script async src="https://docs.opencv.org/master/opencv.js" 
-        onload='cv["onRuntimeInitialized"]=()=> { runBlur() }' type="text/javascript">
-</script>
 <script>
   function runBlur() {
     let src = cv.imread('imageSrc');
@@ -88,7 +85,10 @@ tests:
 
 <h2>Blure OpenCV.js</h2>
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
+<p></p>
 <canvas id="canvasOutput" ></canvas>
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { runBlur() }' type="text/javascript"></script>
 ```
 
 </section>

@@ -46,9 +46,6 @@ tests:
 <div id='html-seed'>
 
 ```html
-<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { contour() }' type="text/javascript">
-</script>
-
 <script type="text/javascript">
   function contour() {
     let mat = cv.imread("imageSrc");
@@ -66,17 +63,19 @@ tests:
     edged.delete();
     contours.delete();
     hierarchy.delete();
-};
+  };
 </script>
 
 <h2>OpenCV.js</h2>        
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>    
+<p></p>
 <canvas id="canvasOutput" ></canvas>
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { contour() }' type="text/javascript">
+</script>
 ```
 
 </div>
-
-
 
 </section>
 
@@ -84,9 +83,6 @@ tests:
 <section id='solution'>
 
 ```html
-<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { contour() }' type="text/javascript">
-</script>
-
 <script type="text/javascript">
   function contour() {
     let mat = cv.imread("imageSrc");
@@ -104,12 +100,16 @@ tests:
     edged.delete();
     contours.delete();
     hierarchy.delete();
-};
+  };
 </script>
 
 <h2>OpenCV.js</h2>        
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>    
+<p></p>
 <canvas id="canvasOutput" ></canvas>
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { contour() }' type="text/javascript">
+</script>
 ```
 
 </section>

@@ -41,21 +41,19 @@ tests:
 <div id='html-seed'>
 
 ```html
-<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { contrast() }'  type="text/javascript">
-</script>
 
 <script type="text/javascript">
 
-function contrast() {
-  let mat = cv.imread("imageSrc");
-  let dst = new cv.Mat();
-  let cont = Number(document.getElementById("contrast").value);
-  let brig = Number(document.getElementById("brightness").value);
-  cv.convertScaleAbs(mat, dst, cont, brig);
-  cv.imshow("canvasOutput", dst);
-  mat.delete();
-  dst.delete();
-};
+  function contrast() {
+    let mat = cv.imread("imageSrc");
+    let dst = new cv.Mat();
+    let cont = Number(document.getElementById("contrast").value);
+    let brig = Number(document.getElementById("brightness").value);
+    cv.convertScaleAbs(mat, dst, cont, brig);
+    cv.imshow("canvasOutput", dst);
+    mat.delete();
+    dst.delete();
+  };
 
 </script>
 
@@ -64,6 +62,9 @@ function contrast() {
 contrast:<input type="range" min="1.0" max="3.0" step="0.1" value="1.5" id="contrast" onchange="contrast()">
 brightness:<input type="range" min="0" max="100" step="1" value="50" id="brightness" onchange="contrast()">
 <canvas id="canvasOutput" ></canvas>
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { contrast() }'  type="text/javascript"></script>
+
 ```
 
 </div>
@@ -74,21 +75,19 @@ brightness:<input type="range" min="0" max="100" step="1" value="50" id="brightn
 <section id='solution'>
 
 ```html
-<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { contrast() }'  type="text/javascript">
-</script>
 
 <script type="text/javascript">
 
-function contrast() {
-  let mat = cv.imread("imageSrc");
-  let dst = new cv.Mat();
-  let cont = Number(document.getElementById("contrast").value);
-  let brig = Number(document.getElementById("brightness").value);
-  cv.convertScaleAbs(mat, dst, cont, brig);
-  cv.imshow("canvasOutput", dst);
-  mat.delete();
-  dst.delete();
-};
+  function contrast() {
+    let mat = cv.imread("imageSrc");
+    let dst = new cv.Mat();
+    let cont = Number(document.getElementById("contrast").value);
+    let brig = Number(document.getElementById("brightness").value);
+    cv.convertScaleAbs(mat, dst, cont, brig);
+    cv.imshow("canvasOutput", dst);
+    mat.delete();
+    dst.delete();
+  };
 
 </script>
 
@@ -97,6 +96,9 @@ function contrast() {
 contrast:<input type="range" min="1.0" max="3.0" step="0.1" value="1.5" id="contrast" onchange="contrast()">
 brightness:<input type="range" min="0" max="100" step="1" value="50" id="brightness" onchange="contrast()">
 <canvas id="canvasOutput" ></canvas>
+
+<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { contrast() }'  type="text/javascript"></script>
+
 ```
 
 </section>
