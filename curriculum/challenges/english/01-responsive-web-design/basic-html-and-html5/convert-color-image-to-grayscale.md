@@ -1,15 +1,18 @@
 ---
 id: 5d383f6f2cd33e8211fad377
-title: Converts an image from one color space to another
+title: Convert color image to grayscale
 challengeType: 0
 videoUrl: 
 ---
 
 ## Description
 <section id='description'>
-We use the function: <code>cv.cvtColor (src, dst, code, dstCn = 0) </code>
-There are more than 150 color-space conversion methods available in OpenCV.js. But we will look into the most widely used one: RGBA to Gray.
+There are more than 150 color-space conversion methods available in OpenCV.js. In this lesson we will look into the most widely used one: RGBA to Gray.
 The function converts an input image from one color space to another. In case of a transformation to-from RGBA color space, the order of the channels should be specified explicitly. Note that the default color format in OpenCV.js is often referred to as RGBA.
+We use the function: <code>cv.cvtColor (src, dst, code, dstCn = 0) </code> there <code>src</code> is an input image,<code>dst</code> - destination one and <code>code</code> is a color conversion code.
+Convert color image to grayscale is a great way to take up less memory, because  grayscale image consists of a single color. That means total size of image in bytes is 3 times less than RGB.
+</section>
+
 
 </section>
 
