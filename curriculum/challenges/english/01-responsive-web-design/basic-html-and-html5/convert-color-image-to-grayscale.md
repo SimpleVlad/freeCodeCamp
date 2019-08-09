@@ -87,7 +87,7 @@ tests:
 
 <h2>OpenCV.js</h2>
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat" />
-<p>ы
+<p>
 <canvas id="canvasOutput" ></canvas>
 
 <script async src="https://docs.opencv.org/master/opencv.js"
