@@ -57,10 +57,13 @@ tests:
 
 <h2>OpenCV.js</h2>
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat" />
-<p></p>
+<p>
 <canvas id="canvasOutput" ></canvas>
 
-<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { draw() }' type="text/javascript"></script>
+<script async src="https://docs.opencv.org/master/opencv.js" 
+        onload='cv["onRuntimeInitialized"]=()=> { draw() }' 
+        type="text/javascript">
+</script>
 ```
 </div>
 </section>
@@ -84,9 +87,12 @@ tests:
 
 <h2>OpenCV.js</h2>
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat" />
-<p></p>
+<p>ы
 <canvas id="canvasOutput" ></canvas>
 
-<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { draw() }' type="text/javascript"></script>
+<script async src="https://docs.opencv.org/master/opencv.js"
+        onload='cv["onRuntimeInitialized"]=()=> { draw() }' 
+        type="text/javascript">
+</script>
 ```
 </section>
