@@ -13,9 +13,6 @@ We use the function: <code>cv.cvtColor (src, dst, code) </code> where <code>src<
 Convert color image to grayscale is a great way to take up less memory, because  grayscale image consists of a single color. That means total size of image in bytes is 3 times less than RGB.
 </section>
 
-s
-</section>
-
 ## Instructions
 <section id='instructions'>
 You should use <code>cv.cvtColor()</code> to conver an image to another color spase.
