@@ -1,0 +1,129 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>CVdrawing</title>
+</head>
+<body>
+<p id="status">OpenCV.js is loading...</p>
+<canvas id="canvas" width="640" height="426">
+</canvas>
+<img id="src" src="bird.jpg" style="display:none"/>
+<input type="button" id="myButton" value="Test" disabled=true
+onclick="inpaint()"/>
+
+<script type="text/javascript">
+
+var checker = false;
+var src;
+var mask;
+var dst;
+var p_x = 0;
+var p_y = 0;
+var paint;
+var srcmat;
+var maskmat;
+var dstmat;
+var x = 0;
+var y = 0;
+
+window.onload = function()
+{
+context = document.getElementById("canvas").getContext("2d");
+img = document.getElementById("src");
+context.drawImage(img, 0, 0);
+};
+
+document.getElementById("canvas").onmousedown = function(e)
+{
+  paint = true;
+  x = e.pageX - this.offsetLeft;
+  y = e.pageY - this.offsetTop;
+  draw();
+};
+
+document.getElementById("canvas").onmousemove = function(e)
+{
+  if(paint)
+  {
+    x = e.pageX - this.offsetLeft;
+    y = e.pageY - this.offsetTop;
+    draw();
+  }
+};
+
+document.getElementById("canvas").onmouseup = function(e)
+{
+  paint = false;
+};
+
+document.getElementById("canvas").onmouseleave = function(e)
+{
+  paint = false;
+};
+
+function init()
+{
+  if (checker == true)
+  {
+    src = cv.imread("src");;
+    dst = src.clone();
+    let cols = src.size().width;
+    let rows = src.size().height;
+    let ch = src.channels();
+    srcmat = new cv.Mat();
+    maskmat = new cv.Mat(426, 640, cv.CV_8UC1, new cv.Scalar(0, 0, 0, 255));;
+    dstmat = new cv.Mat();
+  }
+}
+
+function draw()
+{
+
+    if (paint == true)
+    {
+        if (p_x == 0)
+        {
+            p_x = x;
+            p_y = y;
+        }
+        cv.line(src, new cv.Point(p_x, p_y), new cv.Point(x, y),
+        new cv.Scalar(255, 255, 255, 255), 2);
+        cv.line(maskmat, new cv.Point(p_x, p_y), new cv.Point(x, y),
+        new cv.Scalar(255, 255, 255, 255), 2);
+        p_x = x;
+        p_y = y;
+        cv.imshow("canvas", src);
+    }
+}
+
+function inpaint()
+{
+  cv.cvtColor(src, srcmat, cv.COLOR_RGBA2RGB);
+  cv.cvtColor(dst, dstmat, cv.COLOR_RGBA2RGB);
+  cv.inpaint(srcmat, maskmat, dstmat, 3, cv.INPAINT_TELEA);
+  cv.imshow("canvas", dstmat);
+  src.delete();
+  dst.delete();
+  srcmat.delete();
+  maskmat.delete();
+  dstmat.delete();
+}
+
+function onOpenCvReady()
+{
+  document.getElementById("status").innerHTML = "OpenCV.js is ready.";
+  cv["onRuntimeInitialized"] = () =>
+  {
+      document.getElementById("myButton").disabled = false;
+      checker = true;
+      init();
+  }
+}
+
+</script>
+
+<script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript">
+</script>
+
+</body>
+</html>
