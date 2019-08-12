@@ -39,7 +39,7 @@ tests:
     let src = cv.imread('imageSrc');
     let dst = new cv.Mat();
     let kernelSize = new cv.Size(3, 3);
-    cv.blur(src, dst, kernelSize);
+ 
     cv.imshow('canvasOutput', dst);
     src.delete();
     dst.delete();
@@ -51,7 +51,10 @@ tests:
 <p></p>
 <canvas id="canvasOutput" ></canvas>
 
-<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { runBlur() }' type="text/javascript"></script>
+<script async src="https://docs.opencv.org/master/opencv.js"
+        onload='cv["onRuntimeInitialized"]=()=> { runBlur() }'
+        type="text/javascript">
+</script>
 ```
 
 </div>
@@ -80,6 +83,9 @@ tests:
 <p></p>
 <canvas id="canvasOutput" ></canvas>
 
-<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { runBlur() }' type="text/javascript"></script>
+<script async src="https://docs.opencv.org/master/opencv.js"
+        onload='cv["onRuntimeInitialized"]=()=> { runBlur() }'
+        type="text/javascript">
+</script>
 ```
 </section>
