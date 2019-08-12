@@ -72,7 +72,7 @@ tests:
 
 ```html
 <script>
-  function runBlur() {s
+  function runBlur() {
     let src = cv.imread('imageSrc');
     let dst = new cv.Mat();
     let kernelSize = new cv.Size(3, 3);
