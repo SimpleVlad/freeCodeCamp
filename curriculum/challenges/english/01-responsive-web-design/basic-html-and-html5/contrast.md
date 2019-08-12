@@ -12,7 +12,7 @@ videoUrl:
 
 ## Instructions
 <section id='instructions'>
-
+You should use <code>cv.convertScaleAbs()</code> to change contrast and brightness
 </section>
 
 ## Tests
