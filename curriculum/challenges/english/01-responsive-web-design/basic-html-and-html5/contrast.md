@@ -7,7 +7,8 @@ videoUrl:
 
 ## Description
 <section id='description'>
-
+This function helps you lighten and change the contrast of the image that stays in one color space. 
+We use the function: <code>cv.convertScaleAbs(src, dst, contrast, brightness) </code>, where <code>src</code> is an input image,<code>dst</code> is a destination one, and <code>contrast</code> is a number argument that defines the color depth, <code>brightness</code> is a number argument that enlightens image.
 </section>
 
 ## Instructions
@@ -40,7 +41,7 @@ tests:
     let dst = new cv.Mat();
     let cont = Number(document.getElementById("contrast").value);
     let brig = Number(document.getElementById("brightness").value);
-    cv.convertScaleAbs(mat, dst, cont, brig);
+    
     cv.imshow("canvasOutput", dst);
     mat.delete();
     dst.delete();
