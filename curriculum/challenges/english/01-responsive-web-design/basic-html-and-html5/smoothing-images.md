@@ -1,8 +1,8 @@
 ---
 id: 5d428542352db8b32553fd9d
-title: Blur
+title: Smoothing Images
 challengeType: 0
-videoUrl: 
+videoUrl:
 ---
 
 ## Description
@@ -72,7 +72,7 @@ tests:
 
 ```html
 <script>
-  function runBlur() {
+  function runBlur() {s
     let src = cv.imread('imageSrc');
     let dst = new cv.Mat();
     let kernelSize = new cv.Size(3, 3);
