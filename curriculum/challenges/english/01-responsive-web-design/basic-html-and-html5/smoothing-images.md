@@ -8,7 +8,7 @@ videoUrl:
 ## Description
 <section id='description'>
 Image blurring is achieved by convolving the image with a low-pass filter kernel. It is useful for removing noises. It actually removes high frequency content (eg: noise, edges) from the image. So edges are blurred a little bit in this operation
-We use the functions: <code>cv.blur (src,dst,ksize)</code>  where <code>src</code> is an input image,<code>dst</code> - destination one and <code>ksize</code> blurring kernel size. 
+We use the functions: <code>cv.blur(src, dst, ksize)</code>  where <code>src</code> is an input image,<code>dst</code> - destination one and <code>ksize</code> blurring kernel size. 
 </section>
 
 ## Instructions
