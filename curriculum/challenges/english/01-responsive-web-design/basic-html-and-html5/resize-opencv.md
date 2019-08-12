@@ -7,15 +7,14 @@ videoUrl:
 
 ## Description
 <section id='description'>
-<code>p</code> elements are the preferred element for paragraph text on websites. <code>p</code> is short for "paragraph".
-You can create a paragraph element like this:
-<code>&#60;p&#62;I'm a p tag!&#60;/p&#62;</code>
+Scaling is just resizing of the image. OpenCV comes with a function cv.resize() for this purpose. The size of the image can be specified manually, or you can specify the scaling factor.
+We use the function: <code>cv.resize(src, dst, code) </code> where <code>src</code> is an input image,<code>dst</code> - destination one and <code>dsize</code> is a size of output image.
 </section>
 
 ## Instructions
 <section id='instructions'>
-Create a <code>p</code> element below your <code>h2</code> element, and give it the text "Hello Paragraph".
-<strong>Note:</strong> As a convention, all HTML tags are written in lowercase, for example <code>&#60;p&#62;&#60;/p&#62;</code> and not <code>&#60;P&#62;&#60;/P&#62;</code>.
+You should use <code>cv.resize()</code> to conver an image to another color spase.
+
 </section>
 
 ## Tests
@@ -42,7 +41,7 @@ tests:
     let src = cv.imread("src");
     let dst = new cv.Mat();
     let dsize = new cv.Size(src.cols / 2, src.rows / 2);
-    cv.resize(src, dst, dsize);
+
     cv.imshow('canvasOutput', dst);
     src.delete();
     dst.delete();
