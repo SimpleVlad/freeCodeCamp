@@ -7,7 +7,7 @@ videoUrl:
 
 ## Description
 <section id='description'>
-Contours can be explained simply as a curve joining all the continuous points (along the boundary), having same color or intensity. The contours are a useful tool for shape analysis and object detection and recognition. But firstly in this example we use <code>cv.Canny</code> to find edge of object.And only after that we can find a conturs. 
+Contours can be explained simply as a curve joining all the continuous points (along the boundary), having same color or intensity. The contours are a useful tool for shape analysis and object detection and recognition. But firstly in this example we use <code>cv.Canny</code> to find edges of object.And only after that we can find contours. 
 We use functions: <code>cv.findContours (image, contours, mode, method) </code> where <code>image</code> is an input image,<code>conturs</code> is detect contours, each contour is stored as a vector of points <code>mode</code> is contour retrieval mode, <code>method</code> is contour approximation method, and <code>cv.drawContours(image,  contours,  contourIdx, color, thickness)</code> where <code>image</code> is an output image,<code>conturs</code> is all input conturs,<code>contourIdx</code> is a  parameter indicating a contour to draw, <code>color</code> is a color of the contours, <code>thickness</code> is a thickness of lines.
 In this lesson we'll find a external contour of image via <code>cv.RETR_EXTERNAL</code> as <code>mode</code>.
 </section>
