@@ -42,7 +42,7 @@ tests:
 
 <script>
 
-  function rotate() {
+  function runSample() {
     let src = cv.imread("imgSrc");
     let dst = new cv.Mat();
    
@@ -58,7 +58,7 @@ tests:
 <canvas id="canvasOutput" ></canvas>
 
 <script async src="https://docs.opencv.org/master/opencv.js"
-        onload='cv["onRuntimeInitialized"]=()=> { rotate() }'
+        onload='cv["onRuntimeInitialized"]=()=> { runSample() }'
         type="text/javascript">
 </script>
 ```
@@ -72,7 +72,7 @@ tests:
 ```html
 <script type="text/javascript">
 
-  function rotate() {
+  function runSample() {
     let src = cv.imread("imgSrc");
     let dst = new cv.Mat();
     cv.rotate(src, dst, cv.ROTATE_90_CLOCKWISE);
@@ -88,7 +88,7 @@ tests:
 <canvas id="canvasOutput" ></canvas>
 
 <script async src="https://docs.opencv.org/master/opencv.js"
-        onload='cv["onRuntimeInitialized"]=()=> { rotate() }'
+        onload='cv["onRuntimeInitialized"]=()=> { runSample() }'
         type="text/javascript">
 </script>
 ```
