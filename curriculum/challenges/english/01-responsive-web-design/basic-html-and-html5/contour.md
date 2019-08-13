@@ -50,7 +50,7 @@ tests:
 
     cv.imshow("canvasCanny", edged);
 
-    cv.findContours(edged, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE);
+   
 
     cv.drawContours(mat, contours, -1, new cv.Scalar(255, 0, 0, 255),2);
 
