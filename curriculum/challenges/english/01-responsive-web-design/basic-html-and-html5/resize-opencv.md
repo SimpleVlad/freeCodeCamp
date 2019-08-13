@@ -37,7 +37,7 @@ tests:
 
 <script type="text/javascript">
 
-  function runResize(){
+  function runSamples(){
     let src = cv.imread("src");
     let dst = new cv.Mat();
     let dsize = new cv.Size(src.cols / 2, src.rows / 2);
@@ -52,7 +52,10 @@ tests:
 <p></p>
 <canvas id="canvasOutput" ></canvas>
 
-<script async src="https://docs.opencv.org/master/opencv.js" onload= 'cv["onRuntimeInitialized"]=()=> { runResize() }' type="text/javascript"></script>
+<script async src="https://docs.opencv.org/master/opencv.js" 
+        onload= 'cv["onRuntimeInitialized"]=()=> { runSamples() }' 
+        type="text/javascript">
+</script>
 ```
 
 </div>
@@ -65,7 +68,7 @@ tests:
 ```html
 <script type="text/javascript">
 
-  function runResize(){
+  function runSamples(){
     let src = cv.imread("src");
     let dst = new cv.Mat();
     let dsize = new cv.Size(src.cols / 2, src.rows / 2);
@@ -80,7 +83,10 @@ tests:
 <p></p>
 <canvas id="canvasOutput" ></canvas>
 
-<script async src="https://docs.opencv.org/master/opencv.js" onload= 'cv["onRuntimeInitialized"]=()=> { runResize() }' type="text/javascript"></script>
+<script async src="https://docs.opencv.org/master/opencv.js" 
+        onload= 'cv["onRuntimeInitialized"]=()=> { runSamples() }' 
+        type="text/javascript">
+</script>
 ```
 
 </section>
