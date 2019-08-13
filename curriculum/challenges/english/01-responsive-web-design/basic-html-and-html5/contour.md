@@ -7,21 +7,13 @@ videoUrl:
 
 ## Description
 <section id='description'>
-Welcome to freeCodeCamp's HTML coding challenges. These will walk you through web development step-by-step.
-First, you'll start by building a simple web page using HTML. You can edit <code>code</code> in your <code>code editor</code>, which is embedded into this web page.
-Do you see the code in your code editor that says <code>&#60;h1&#62;Hello&#60;/h1&#62;</code>? That's an HTML <code>element</code>.
-Most HTML elements have an <code>opening tag</code> and a <code>closing tag</code>.
-Opening tags look like this:
-<code>&#60;h1&#62;</code>
-Closing tags look like this:
-<code>&#60;/h1&#62;</code>
-The only difference between opening and closing tags is the forward slash after the opening bracket of a closing tag.
-Each challenge has tests you can run at any time by clicking the "Run tests" button. When you pass all tests, you'll be prompted to submit your solution and go to the next coding challenge.
+Contours can be explained simply as a curve joining all the continuous points (along the boundary), having same color or intensity. The contours are a useful tool for shape analysis and object detection and recognition. But firstly in this example we use <code>cv.Canny</code> to find edge of object.And only after that we can find a conturs.
+We use functions: <code>cv.findContours (image, contours, mode, method) </code> where <code>image</code> is an input image,<code>conturs</code> is detect contours, each contour is stored as a vector of points <code>mode</code> is contour retrieval mode, <code>method</code> is contour approximation method, and <code>cv.drawContours(image,  contours,  contourIdx, color)</code> where <code>image</code> is an output image,<code>conturs</code> is all input conturs,<code>contourIdx</code> is a  parameter indicating a contour to draw. , <code>color</code> is a color of the contours.
 </section>
 
 ## Instructions
 <section id='instructions'>
-I don't know what is happaning
+You should use <code>cv.findContours()</code> to find contours and <code>cv.drawContours()</code> to draw contours.
 </section>
 
 ## Tests
@@ -66,12 +58,14 @@ tests:
   };
 </script>
 
-<h2>OpenCV.js</h2>        
-<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>    
+<h2>OpenCV.js</h2>
+<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
 <p></p>
 <canvas id="canvasOutput" ></canvas>
 
-<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { contour() }' type="text/javascript">
+<script async src="https://docs.opencv.org/master/opencv.js"
+        onload='cv["onRuntimeInitialized"]=()=> { contour() }'
+        type="text/javascript">
 </script>
 ```
 
@@ -103,12 +97,14 @@ tests:
   };
 </script>
 
-<h2>OpenCV.js</h2>        
-<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>    
+<h2>OpenCV.js</h2>
+<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
 <p></p>
 <canvas id="canvasOutput" ></canvas>
 
-<script async src="https://docs.opencv.org/master/opencv.js" onload='cv["onRuntimeInitialized"]=()=> { contour() }' type="text/javascript">
+<script async src="https://docs.opencv.org/master/opencv.js"
+        onload='cv["onRuntimeInitialized"]=()=> { contour() }'
+        type="text/javascript">
 </script>
 ```
 
