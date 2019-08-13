@@ -7,13 +7,13 @@ videoUrl:
 
 ## Description
 <section id='description'>
-Scaling is just resizing of the image. OpenCV comes with a function cv.resize() for this purpose. The size of the image can be specified manually, or you can specify the scaling factor.
-We use the function: <code>cv.resize(src, dst, code) </code> where <code>src</code> is an input image,<code>dst</code> - destination one and <code>dsize</code> is a size of output image.
+Changing images sizes is the most common image processing procedure. OpenCV comes with a function cv.resize() for this purpose. The size of the image can be specified manually, or you can specify the scaling factor.
+We use the function: <code>cv.resize(src, dst, dsize) </code> where <code>src</code> is an input image,<code>dst</code> - destination one and <code>dsize</code> is a size of output image.
 </section>
 
 ## Instructions
 <section id='instructions'>
-You should use <code>cv.resize()</code> to conver an image to another color spase.
+You should use <code>cv.resize()</code> to resize image, and use src, dst, dsize like arguments of function.
 
 </section>
 
