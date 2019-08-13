@@ -58,7 +58,6 @@ tests:
         cv.ellipse(mat,startPoin[i], new cv.Size(50, 50), angle[i], 0.0, 300.0, color[i], cv.FILLED);
         cv.circle(mat,startPoin[i], 25, new cv.Scalar(255, 255, 255, 255), cv.FILLED);
     }
-
   
     cv.putText(mat, "OpenCV", new cv.Point(30, 270), cv.FONT_HERSHEY_PLAIN, 4, new cv.Scalar(0, 0, 0, 255), 5)
   
@@ -86,14 +85,15 @@ tests:
 
   function runSample() {
     let mat = new cv.Mat(300, 300, cv.CV_8UC3, new cv.Scalar(255, 255, 255, 255));
-  
-    cv.ellipse(mat, new cv.Point(220, 170), new cv.Size(50, 50), 300.0, 0.0, 300.0, new cv.Scalar(0, 0, 255, 255), cv.FILLED);
-    cv.ellipse(mat, new cv.Point(80, 170), new cv.Size(50, 50), 0.0, 0.0, 300.0, new cv.Scalar(0, 255, 0, 255), cv.FILLED);
-    cv.ellipse(mat, new cv.Point(150, 60), new cv.Size(50, 50), 120.0, 0.0, 300.0, new cv.Scalar(255, 0, 0, 255), cv.FILLED);
-  
-    cv.circle(mat, new cv.Point(220, 170), 25, new cv.Scalar(255, 255, 255, 255), cv.FILLED);
-    cv.circle(mat, new cv.Point(80, 170), 25, new cv.Scalar(255, 255, 255, 255), cv.FILLED);
-    cv.circle(mat, new cv.Point(150, 60), 25, new cv.Scalar(255, 255, 255, 255), cv.FILLED);
+    let angle = [300.0, 0.0, 120.0];
+    let color = [new cv.Scalar(0, 0, 255, 255),new cv.Scalar(0, 255, 0, 255),new cv.Scalar(255, 0, 0, 255)];
+    let startPoin = [new cv.Point(220, 170),new cv.Point(80, 170), new cv.Point(150, 60)];
+
+
+    for (let i=0; i<3; ++i){
+        cv.ellipse(mat,startPoin[i], new cv.Size(50, 50), angle[i], 0.0, 300.0, color[i], cv.FILLED);
+        cv.circle(mat,startPoin[i], 25, new cv.Scalar(255, 255, 255, 255), cv.FILLED);
+    }
   
     cv.putText(mat, "OpenCV", new cv.Point(30, 270), cv.FONT_HERSHEY_PLAIN, 4, new cv.Scalar(0, 0, 0, 255), 5)
   
