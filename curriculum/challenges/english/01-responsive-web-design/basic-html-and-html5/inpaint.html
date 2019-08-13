@@ -23,8 +23,8 @@ var paint;
 var srcmat;
 var maskmat;
 var dstmat;
-var x = 0;
-var y = 0;
+var x;
+var y;
 
 window.onload = function()
 {
@@ -38,6 +38,11 @@ document.getElementById("canvas").onmousedown = function(e)
   paint = true;
   x = e.pageX - this.offsetLeft;
   y = e.pageY - this.offsetTop;
+  if (p_x == 0)
+  {
+      p_x = x;
+      p_y = y;
+  }
   draw();
 };
 
@@ -45,6 +50,10 @@ document.getElementById("canvas").onmousemove = function(e)
 {
   if(paint)
   {
+    cv.line(src, new cv.Point(p_x, p_y), new cv.Point(x, y), new cv.Scalar(255, 255, 255, 255), 2);
+    cv.line(maskmat, new cv.Point(p_x, p_y), new cv.Point(x, y), new cv.Scalar(255, 255, 255, 255), 2);
+    p_x = x;
+    p_y = y;
     x = e.pageX - this.offsetLeft;
     y = e.pageY - this.offsetTop;
     draw();
@@ -54,6 +63,8 @@ document.getElementById("canvas").onmousemove = function(e)
 document.getElementById("canvas").onmouseup = function(e)
 {
   paint = false;
+  p_x = 0;
+  p_y = 0;
 };
 
 document.getElementById("canvas").onmouseleave = function(e)
@@ -81,17 +92,6 @@ function draw()
 
     if (paint == true)
     {
-        if (p_x == 0)
-        {
-            p_x = x;
-            p_y = y;
-        }
-        cv.line(src, new cv.Point(p_x, p_y), new cv.Point(x, y),
-        new cv.Scalar(255, 255, 255, 255), 2);
-        cv.line(maskmat, new cv.Point(p_x, p_y), new cv.Point(x, y),
-        new cv.Scalar(255, 255, 255, 255), 2);
-        p_x = x;
-        p_y = y;
         cv.imshow("canvas", src);
     }
 }
