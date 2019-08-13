@@ -7,8 +7,9 @@ videoUrl:
 
 ## Description
 <section id='description'>
-Contours can be explained simply as a curve joining all the continuous points (along the boundary), having same color or intensity. The contours are a useful tool for shape analysis and object detection and recognition. But firstly in this example we use <code>cv.Canny</code> to find edge of object.And only after that we can find a conturs.
-We use functions: <code>cv.findContours (image, contours, mode, method) </code> where <code>image</code> is an input image,<code>conturs</code> is detect contours, each contour is stored as a vector of points <code>mode</code> is contour retrieval mode, <code>method</code> is contour approximation method, and <code>cv.drawContours(image,  contours,  contourIdx, color)</code> where <code>image</code> is an output image,<code>conturs</code> is all input conturs,<code>contourIdx</code> is a  parameter indicating a contour to draw. , <code>color</code> is a color of the contours.
+Contours can be explained simply as a curve joining all the continuous points (along the boundary), having same color or intensity. The contours are a useful tool for shape analysis and object detection and recognition. But firstly in this example we use <code>cv.Canny</code> to find edge of object.And only after that we can find a conturs. 
+We use functions: <code>cv.findContours (image, contours, mode, method) </code> where <code>image</code> is an input image,<code>conturs</code> is detect contours, each contour is stored as a vector of points <code>mode</code> is contour retrieval mode, <code>method</code> is contour approximation method, and <code>cv.drawContours(image,  contours,  contourIdx, color, thickness)</code> where <code>image</code> is an output image,<code>conturs</code> is all input conturs,<code>contourIdx</code> is a  parameter indicating a contour to draw, <code>color</code> is a color of the contours, <code>thickness</code> is a thickness of lines.
+In this lesson we'll find a external contour of image via <code>cv.RETR_EXTERNAL</code> as <code>mode</code>.
 </section>
 
 ## Instructions
@@ -39,7 +40,7 @@ tests:
 
 ```html
 <script type="text/javascript">
-  function contour() {
+  function runSample() {
     let mat = cv.imread("imageSrc");
     let edged = new cv.Mat();
     let contours = new cv.MatVector();
@@ -47,9 +48,11 @@ tests:
 
     cv.Canny(mat, edged, 100, 200);
 
-    cv.findContours(edged, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
+    cv.imshow("canvasCanny", edged);
 
-    cv.drawContours(mat, contours, -1, new cv.Scalar(255, 0, 0, 255));
+    cv.findContours(edged, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE);
+
+    cv.drawContours(mat, contours, -1, new cv.Scalar(255, 0, 0, 255),2);
 
     cv.imshow("canvasOutput", mat);
     edged.delete();
@@ -61,10 +64,12 @@ tests:
 <h2>OpenCV.js</h2>
 <img id="imageSrc" src="https://s3.amazonaws.com/freecodecamp/FCCStickers-CamperBot200x200.jpg"/>
 <p></p>
+<canvas id="canvasCanny" ></canvas>
+<p></p>
 <canvas id="canvasOutput" ></canvas>
 
 <script async src="https://docs.opencv.org/master/opencv.js"
-        onload='cv["onRuntimeInitialized"]=()=> { contour() }'
+        onload='cv["onRuntimeInitialized"]=()=> { runSample() }'
         type="text/javascript">
 </script>
 ```
@@ -78,7 +83,7 @@ tests:
 
 ```html
 <script type="text/javascript">
-  function contour() {
+  function runSample() {
     let mat = cv.imread("imageSrc");
     let edged = new cv.Mat();
     let contours = new cv.MatVector();
@@ -86,7 +91,9 @@ tests:
 
     cv.Canny(mat, edged, 100, 200);
 
-    cv.findContours(edged, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
+    cv.imshow("canvasCanny", edged);
+
+    cv.findContours(edged, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE);
 
     cv.drawContours(mat, contours, -1, new cv.Scalar(0, 255, 0, 255));
 
@@ -100,10 +107,12 @@ tests:
 <h2>OpenCV.js</h2>
 <img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
 <p></p>
+<canvas id="canvasCanny" ></canvas>
+<p></p>
 <canvas id="canvasOutput" ></canvas>
 
 <script async src="https://docs.opencv.org/master/opencv.js"
-        onload='cv["onRuntimeInitialized"]=()=> { contour() }'
+        onload='cv["onRuntimeInitialized"]=()=> { runSample() }'
         type="text/javascript">
 </script>
 ```
