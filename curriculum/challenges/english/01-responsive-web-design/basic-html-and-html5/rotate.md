@@ -8,7 +8,7 @@ videoUrl:
 ## Description
 <section id='description'>
 In many cases we need to rotate image. In openCV you can do this way to matrix transformations.
-We use the function: <code>cv.rotate(src, dst, cv.ROTATE_90_CLOCKWISE)</code> to rotate on 90 degree where <code>src</code> is an input image,<code>dst</code> is destination one and <code>code</code> is a rotation code.
+We use the function: <code>cv.rotate(src, dst ,rotateCode)</code> to rotate on 90 degree where <code>src</code> is an input image,<code>dst</code> is destination one and <code>rotateCode</code> is a rotation code.
 
 </section>
 
@@ -45,7 +45,7 @@ tests:
   function rotate() {
     let src = cv.imread("imgSrc");
     let dst = new cv.Mat();
-    cv.rotate(src, dst, cv.ROTATE_90_CLOCKWISE);
+   
     cv.imshow("canvasOutput", dst);
     src.delete();
     dst.delete();
@@ -58,7 +58,7 @@ tests:
 <canvas id="canvasOutput" ></canvas>
 
 <script async src="https://docs.opencv.org/master/opencv.js"
-        onload='cv["onRuntimeInitialized"]=()=> { draw() }'
+        onload='cv["onRuntimeInitialized"]=()=> { rotate() }'
         type="text/javascript">
 </script>
 ```
@@ -88,7 +88,7 @@ tests:
 <canvas id="canvasOutput" ></canvas>
 
 <script async src="https://docs.opencv.org/master/opencv.js"
-        onload='cv["onRuntimeInitialized"]=()=> { draw() }'
+        onload='cv["onRuntimeInitialized"]=()=> { rotate() }'
         type="text/javascript">
 </script>
 ```
