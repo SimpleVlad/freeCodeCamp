@@ -49,7 +49,7 @@ tests:
 
     cv.findContours(edged, contours, hierarchy, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE);
 
-    cv.drawContours(mat, contours, -1, new cv.Scalar(0, 255, 0, 255));
+    cv.drawContours(mat, contours, -1, new cv.Scalar(255, 0, 0, 255));
 
     cv.imshow("canvasOutput", mat);
     edged.delete();
@@ -59,7 +59,7 @@ tests:
 </script>
 
 <h2>OpenCV.js</h2>
-<img id="imageSrc" src="http://bit.ly/fcc-relaxing-cat"/>
+<img id="imageSrc" src="https://s3.amazonaws.com/freecodecamp/FCCStickers-CamperBot200x200.jpg"/>
 <p></p>
 <canvas id="canvasOutput" ></canvas>
 
