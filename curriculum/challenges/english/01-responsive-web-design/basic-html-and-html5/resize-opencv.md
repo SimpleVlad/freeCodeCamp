@@ -13,7 +13,7 @@ We use the function: <code>cv.resize(src, dst, dsize) </code> where <code>src</c
 
 ## Instructions
 <section id='instructions'>
-You should use <code>cv.resize()</code> to resize image, and use src, dst, dsize like arguments of function.
+You should use <code>cv.resize()</code> to resize image, and use src, dst, dsize as arguments of function.
 
 </section>
 
@@ -37,7 +37,7 @@ tests:
 
 <script type="text/javascript">
 
-  function runSamples(){
+  function runSample(){
     let src = cv.imread("src");
     let dst = new cv.Mat();
     let dsize = new cv.Size(src.cols / 2, src.rows / 2);
@@ -53,7 +53,7 @@ tests:
 <canvas id="canvasOutput" ></canvas>
 
 <script async src="https://docs.opencv.org/master/opencv.js" 
-        onload= 'cv["onRuntimeInitialized"]=()=> { runSamples() }' 
+        onload= 'cv["onRuntimeInitialized"]=()=> { runSample() }' 
         type="text/javascript">
 </script>
 ```
@@ -68,7 +68,7 @@ tests:
 ```html
 <script type="text/javascript">
 
-  function runSamples(){
+  function runSample(){
     let src = cv.imread("src");
     let dst = new cv.Mat();
     let dsize = new cv.Size(src.cols / 2, src.rows / 2);
@@ -84,7 +84,7 @@ tests:
 <canvas id="canvasOutput" ></canvas>
 
 <script async src="https://docs.opencv.org/master/opencv.js" 
-        onload= 'cv["onRuntimeInitialized"]=()=> { runSamples() }' 
+        onload= 'cv["onRuntimeInitialized"]=()=> { runSample() }' 
         type="text/javascript">
 </script>
 ```
