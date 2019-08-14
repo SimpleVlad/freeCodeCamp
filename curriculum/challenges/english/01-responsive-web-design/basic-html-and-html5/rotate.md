@@ -8,7 +8,7 @@ videoUrl:
 ## Description
 <section id='description'>
 In many cases we need to rotate image. In openCV you can do this way to matrix transformations.
-We use the function: <code>cv.rotate(src, dst ,rotateCode)</code> to rotate on 90 degree where <code>src</code> is an input image,<code>dst</code> is destination one and <code>rotateCode</code> is a rotation code.
+We use the function: <code>cv.rotate(src, dst, rotateCode)</code> to rotate on 90 degree where <code>src</code> is an input image, <code>dst</code> is destination one and <code>rotateCode</code> is a rotation code.
 
 </section>
 
@@ -92,4 +92,4 @@ tests:
         type="text/javascript">
 </script>
 ```
-</section>q
+</section>
