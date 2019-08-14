@@ -15,10 +15,9 @@ onclick="inpaint()"/>
 
 var checker = false;
 var src;
-var mask;
 var dst;
-var p_x = 0;
-var p_y = 0;
+var lastX = 0;
+var lastY = 0;
 var paint;
 var srcmat;
 var maskmat;
@@ -38,33 +37,32 @@ document.getElementById("canvas").onmousedown = function(e)
   paint = true;
   x = e.pageX - this.offsetLeft;
   y = e.pageY - this.offsetTop;
-  if (p_x == 0)
+  if (lastX == 0)
   {
-      p_x = x;
-      p_y = y;
+      lastX = x;
+      lastY = y;
   }
-  draw();
 };
 
 document.getElementById("canvas").onmousemove = function(e)
 {
   if(paint)
   {
-    cv.line(src, new cv.Point(p_x, p_y), new cv.Point(x, y), new cv.Scalar(255, 255, 255, 255), 2);
-    cv.line(maskmat, new cv.Point(p_x, p_y), new cv.Point(x, y), new cv.Scalar(255, 255, 255, 255), 2);
-    p_x = x;
-    p_y = y;
+    cv.line(src, new cv.Point(lastX, lastY), new cv.Point(x, y), new cv.Scalar(255, 255, 255, 255), 2);
+    cv.line(maskmat, new cv.Point(lastX, lastY), new cv.Point(x, y), new cv.Scalar(255, 255, 255, 255), 2);
+    lastX = x;
+    lastY = y;
     x = e.pageX - this.offsetLeft;
     y = e.pageY - this.offsetTop;
-    draw();
+    cv.imshow("canvas", src);
   }
 };
 
 document.getElementById("canvas").onmouseup = function(e)
 {
   paint = false;
-  p_x = 0;
-  p_y = 0;
+  lastX = 0;
+  lastY = 0;
 };
 
 document.getElementById("canvas").onmouseleave = function(e)
@@ -85,15 +83,6 @@ function init()
     maskmat = new cv.Mat(426, 640, cv.CV_8UC1, new cv.Scalar(0, 0, 0, 255));;
     dstmat = new cv.Mat();
   }
-}
-
-function draw()
-{
-
-    if (paint == true)
-    {
-        cv.imshow("canvas", src);
-    }
 }
 
 function inpaint()
