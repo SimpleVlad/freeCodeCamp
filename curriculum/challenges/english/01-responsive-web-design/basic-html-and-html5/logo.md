@@ -15,13 +15,13 @@ Opening tags look like this:
 <code>&#60;h1&#62;</code>
 Closing tags look like this:
 <code>&#60;/h1&#62;</code>
-The only difference between opening and closing tags is the forward slash after the opening bracket of a closing tag.
-Each challenge has tests you can run at any time by clicking the "Run tests" button. When you pass all tests, you'll be prompted to submit your solution and go to the next coding challenge.
+
 </section>
 
 ## Instructions
 <section id='instructions'>
-
+You should use <code>cv.ellipse()</code> to drow a elliptical figur with the given parameters.
+Also we need to use <code>cv.circle()</code> to drow a circle. We need it for drow a centers our figurs.
 </section>
 
 ## Tests
@@ -52,7 +52,7 @@ tests:
     let startAngles = [240.0, 0.0, -240.0];
     let endAngles = [-60.0, 300.0, 60.0];
     let colors = [new cv.Scalar(0, 0, 255, 255), new cv.Scalar(0, 255, 0, 255),new cv.Scalar(255, 0, 0, 255)];
-    let startPoints = [new cv.Point(220, 170), new cv.Point(80, 170), new cv.Point(150, 60)];
+    let centers = [new cv.Point(220, 170), new cv.Point(80, 170), new cv.Point(150, 60)];
     let circleRadius = 25;
     let whiteColor = new cv.Scalar(255, 255, 255, 255);
     let ellipseAxes = new cv.Size(50, 50);
@@ -60,7 +60,7 @@ tests:
 
     for (let i=0; i<3; ++i){
       
-      
+
     }
   
     cv.putText(mat, "OpenCV", new cv.Point(30, 270), cv.FONT_HERSHEY_PLAIN, 4, new cv.Scalar(0, 0, 0, 255), 5)
@@ -88,15 +88,19 @@ tests:
 <script type="text/javascript">
 
   function runSample() {
+  
     let mat = new cv.Mat(300, 300, cv.CV_8UC3, new cv.Scalar(255, 255, 255, 255));
-    let angle = [300.0, 0.0, 120.0];
-    let color = [new cv.Scalar(0, 0, 255, 255),new cv.Scalar(0, 255, 0, 255),new cv.Scalar(255, 0, 0, 255)];
-    let startPoin = [new cv.Point(220, 170),new cv.Point(80, 170), new cv.Point(150, 60)];
-
+    let startAngles = [240.0, 0.0, -240.0];
+    let endAngles = [-60.0, 300.0, 60.0];
+    let colors = [new cv.Scalar(0, 0, 255, 255), new cv.Scalar(0, 255, 0, 255),new cv.Scalar(255, 0, 0, 255)];
+    let centers = [new cv.Point(220, 170), new cv.Point(80, 170), new cv.Point(150, 60)];
+    let circleRadius = 25;
+    let whiteColor = new cv.Scalar(255, 255, 255, 255);
+    let ellipseAxes = new cv.Size(50, 50);
 
     for (let i=0; i<3; ++i){
-        cv.ellipse(mat,startPoin[i], new cv.Size(50, 50), angle[i], 0.0, 300.0, color[i], cv.FILLED);
-        cv.circle(mat,startPoin[i], 25, new cv.Scalar(255, 255, 255, 255), cv.FILLED);
+        cv.ellipse(mat,centers[i], ellipseAxes, 0.0, 0.0, 300.0, color[i], cv.FILLED);
+        cv.circle(mat,centers[i], 25, new cv.Scalar(255, 255, 255, 255), cv.FILLED);
     }
   
     cv.putText(mat, "OpenCV", new cv.Point(30, 270), cv.FONT_HERSHEY_PLAIN, 4, new cv.Scalar(0, 0, 0, 255), 5)
