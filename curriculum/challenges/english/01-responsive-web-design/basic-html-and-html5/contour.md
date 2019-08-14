@@ -49,8 +49,6 @@ tests:
     cv.Canny(mat, edged, 100, 200);
     cv.imshow("canvasCanny", edged);
 
-   
-    cv.drawContours(mat, contours, -1, new cv.Scalar(255, 0, 0, 255),2);
 
     cv.imshow("canvasOutput", mat);
     edged.delete();
