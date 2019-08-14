@@ -49,8 +49,8 @@ tests:
   function runSample() {
 
     let mat = new cv.Mat(300, 300, cv.CV_8UC3, new cv.Scalar(255, 255, 255, 255));
-    let angles = [300.0, 0.0, 120.0];
-    let anglesEnd = [600.0, 300.0, 420.0];
+    let startAngles = [240.0, 0.0, -240.0];
+    let endAngles = [-60.0, 300.0, 60.0];
     let colors = [new cv.Scalar(0, 0, 255, 255), new cv.Scalar(0, 255, 0, 255),new cv.Scalar(255, 0, 0, 255)];
     let startPoints = [new cv.Point(220, 170), new cv.Point(80, 170), new cv.Point(150, 60)];
     let circleRadius = 25;
@@ -59,8 +59,8 @@ tests:
 
 
     for (let i=0; i<3; ++i){
-        cv.ellipse(mat, startPoints[i], ellipseAxes,  0.0, angles[i], anglesEnd[i], colors[i], cv.FILLED);
-        cv.circle(mat, startPoints[i], circleRadius, whiteColor, cv.FILLED);
+      
+      
     }
   
     cv.putText(mat, "OpenCV", new cv.Point(30, 270), cv.FONT_HERSHEY_PLAIN, 4, new cv.Scalar(0, 0, 0, 255), 5)
