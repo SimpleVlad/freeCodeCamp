@@ -68,8 +68,7 @@ function init()
   src = cv.imread("src");
   let cols = src.size().width;
   let rows = src.size().height;
-  let ch = src.channels();
-  mask = new cv.Mat(rows, cols, cv.CV_8UC1, new cv.Scalar(0, 0, 0, 255));
+  mask = new cv.Mat.zeros(src.size(), cv.CV_8UC1);
 }
 
 function inpaint()
