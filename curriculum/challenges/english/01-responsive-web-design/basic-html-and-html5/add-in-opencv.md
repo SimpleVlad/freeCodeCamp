@@ -29,12 +29,11 @@ I don't know what is happaning
 
 ```yml
 tests:
-   - text: IDN
-     testString: assert($("draw").length) ; 
-  # - text: You test
-  #   testString:  assert(imrid("imageSrc").test(draw()));
+   - text: Use <code>cv.addWeighted</code> to read image and create a matix of image
+     testString: assert(code.match(/cv.addWeighted/g),'Use <code>cv.addWeighted</code> to read image and create a matix of image'); 
+
 ```
-  <!-- testString: assert.isTrue((/hello(\s)+world/gi).test($('h1').text()), 'Your <code>h1</code> element should have the text "Hello World".'); -->
+ 
 </section>
 
 ## Challenge Seed
@@ -44,42 +43,31 @@ tests:
 <div id='html-seed'>
 
 ```html
-<h2>OpenCV.js</h2>
-<input type="button" id="myButton" onclick="addW()" value="Run" disabled=true />
-<p id="status">OpenCV.js is loading...</p>
-<canvas id="img1" ></canvas>
-<canvas id="img2" ></canvas>
+<script>
+  function runSample() {
+    let dst = new cv.Mat();
+    let firstSrc = cv.imread("firstImageSrc");
+    let secondSrc = cv.imread("secondImageSrc");
+    cv.addWeighted(firstSrc, 0.5, secondSrc, 1, 0.0, dst);
+    cv.imshow("canvasOutput", dst);
+    firstSrc.delete();
+    secondSrc.delete();
+    dst.delete();
+  };
+</script>
+
+<img id="firstImageSrc" src="http://bit.ly/fcc-relaxing-cat" style="width:200px;height:200px;"/>
+
+<img id="secondImageSrc" src="https://s3.amazonaws.com/freecodecamp/FCCStickers-CamperBot200x200.jpg" style="width:200px;height:200px;"/>
+
 <canvas id="canvasOutput" ></canvas>
 
-<script type = "text/javascript">
-
-function addW() {
-    let dst = new cv.Mat();
-    let mat1 = new cv.Mat(281, 281, cv.CV_8UC3, new cv.Scalar(0, 0, 255, 255));
-    let mat2 = new cv.Mat(281, 281, cv.CV_8UC3, new cv.Scalar(255, 0, 0, 255));
-    cv.addWeighted(mat1,0.5,mat2,0.5,0.0,dst);
-    cv.imshow('canvasOutput',dst);
-    mat1.delete();
-    mat2.delete();
-    dst.delete();
-};
-
-function onOpenCvReady() {
-    document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
-    cv["onRuntimeInitialized"]=()=>{
-        document.getElementById("myButton").disabled=false;
-        cv.imshow('img1',new cv.Mat(281, 281, cv.CV_8UC3, new cv.Scalar(0, 0, 255, 255)));
-        cv.imshow('img2',new cv.Mat(281, 281, cv.CV_8UC3, new cv.Scalar(255, 0, 0, 255)));
-    }
-}
-</script>
-<script async src = "https://docs.opencv.org/master/opencv.js" onload = "onOpenCvReady();" type = "text/javascript">
+<script async src="https://docs.opencv.org/master/opencv.js" 
+        onload= 'cv["onRuntimeInitialized"]=()=> { runSample() }' 
+        type="text/javascript">
 </script>
 ```
-
 </div>
-
-
 
 </section>
 
