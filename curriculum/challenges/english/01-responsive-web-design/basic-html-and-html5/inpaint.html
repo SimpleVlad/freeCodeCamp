@@ -65,21 +65,19 @@ document.getElementById("canvas").onmouseleave = function(e)
 
 function init()
 {
-  src = cv.imread("src");
-  let cols = src.size().width;
-  let rows = src.size().height;
+  let rgba = cv.imread("src");
+  src = new cv.Mat();
+  cv.cvtColor(rgba, src, cv.COLOR_RGBA2RGB);
   mask = new cv.Mat.zeros(src.size(), cv.CV_8UC1);
+  rgba.delete();
 }
 
 function inpaint()
 {
   let dst = new cv.Mat();
-  let srcmat = new cv.Mat();
-  cv.cvtColor(src, srcmat, cv.COLOR_RGBA2RGB);
-  cv.inpaint(srcmat, mask, dst, 3, cv.INPAINT_TELEA);
+  cv.inpaint(src, mask, dst, 3, cv.INPAINT_TELEA);
   cv.imshow("canvas", dst);
   src.delete();
-  srcmat.delete();
   mask.delete();
   dst.delete();
 }
