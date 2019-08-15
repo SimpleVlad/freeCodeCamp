@@ -5,7 +5,7 @@
 </head>
 <body>
 <p id="status">OpenCV.js is loading...</p>
-<canvas id="canvas" width="640" height="426">
+<canvas id="canvas" >
 </canvas>
 <img id="src" src="bird.jpg" style="display:none"/>
 <input type="button" id="myButton" value="Test" disabled=true
@@ -13,11 +13,7 @@ onclick="inpaint()"/>
 
 <script type="text/javascript">
 
-var checker = false;
 var src;
-var srcmat;
-var dst;
-var dstmat;
 var mask;
 var lastX;
 var lastY;
@@ -28,6 +24,8 @@ window.onload = function()
 {
 context = document.getElementById("canvas").getContext("2d");
 img = document.getElementById("src");
+context.canvas.width = img.width;
+context.canvas.height = img.height;
 context.drawImage(img, 0, 0);
 };
 
@@ -46,8 +44,10 @@ document.getElementById("canvas").onmousemove = function(e)
 {
   if(lastX != undefined)
   {
-    cv.line(src, new cv.Point(lastX, lastY), new cv.Point(x, y), new cv.Scalar(255, 255, 255, 255), 2);
-    cv.line(mask, new cv.Point(lastX, lastY), new cv.Point(x, y), new cv.Scalar(255, 255, 255, 255), 2);
+    cv.line(src, new cv.Point(lastX, lastY), new cv.Point(x, y),
+    new cv.Scalar(255, 255, 255, 255), 2);
+    cv.line(mask, new cv.Point(lastX, lastY), new cv.Point(x, y),
+    new cv.Scalar(255, 255, 255, 255), 2);
     lastX = x;
     lastY = y;
     x = e.pageX - this.offsetLeft;
@@ -56,41 +56,33 @@ document.getElementById("canvas").onmousemove = function(e)
   }
 };
 
-document.getElementById("canvas").onmouseup = function(e)
+document.getElementById("canvas").onmouseup =
+document.getElementById("canvas").onmouseleave = function(e)
 {
-  if (lastX != undefined)
-  {
     lastX = undefined;
     lastY = undefined;
-  }
 };
 
 function init()
 {
-  if (checker == true)
-  {
-    src = cv.imread("src");;
-    dst = src.clone();
-    let cols = src.size().width;
-    let rows = src.size().height;
-    let ch = src.channels();
-    srcmat = new cv.Mat();
-    mask = new cv.Mat(426, 640, cv.CV_8UC1, new cv.Scalar(0, 0, 0, 255));;
-    dstmat = new cv.Mat();
-  }
+  src = cv.imread("src");
+  let cols = src.size().width;
+  let rows = src.size().height;
+  let ch = src.channels();
+  mask = new cv.Mat(rows, cols, cv.CV_8UC1, new cv.Scalar(0, 0, 0, 255));
 }
 
 function inpaint()
 {
+  let dst = new cv.Mat();
+  let srcmat = new cv.Mat();
   cv.cvtColor(src, srcmat, cv.COLOR_RGBA2RGB);
-  cv.cvtColor(dst, dstmat, cv.COLOR_RGBA2RGB);
-  cv.inpaint(srcmat, mask, dstmat, 3, cv.INPAINT_TELEA);
-  cv.imshow("canvas", dstmat);
+  cv.inpaint(srcmat, mask, dst, 3, cv.INPAINT_TELEA);
+  cv.imshow("canvas", dst);
   src.delete();
-  dst.delete();
   srcmat.delete();
   mask.delete();
-  dstmat.delete();
+  dst.delete();
 }
 
 function onOpenCvReady()
@@ -98,9 +90,8 @@ function onOpenCvReady()
   document.getElementById("status").innerHTML = "OpenCV.js is ready.";
   cv["onRuntimeInitialized"] = () =>
   {
-      document.getElementById("myButton").disabled = false;
-      checker = true;
-      init();
+    document.getElementById("myButton").disabled = false;
+    init();
   }
 }
 
