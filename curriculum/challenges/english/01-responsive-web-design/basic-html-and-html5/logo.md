@@ -7,21 +7,18 @@ videoUrl:
 
 ## Description
 <section id='description'>
-Welcome to freeCodeCamp's HTML coding challenges. These will walk you through web development step-by-step.
-First, you'll start by building a simple web page using HTML. You can edit <code>code</code> in your <code>code editor</code>, which is embedded into this web page.
-Do you see the code in your code editor that says <code>&#60;h1&#62;Hello&#60;/h1&#62;</code>? That's an HTML <code>element</code>.
-Most HTML elements have an <code>opening tag</code> and a <code>closing tag</code>.
-Opening tags look like this:
-<code>&#60;h1&#62;</code>
-Closing tags look like this:
-<code>&#60;/h1&#62;</code>
+Sometimes we need to select any objects at the image. OpenCV has drawing functions. In this tutorial, we’ll look at features like cv.ellipse() and cv.circle(). The main aim of this lesson is show how use this function and draw openCV logo.
 
+<code>ellipse(img, center, axes, angle, startAngle, endAngle, color)</code> where <code>img</code> is an image where the circle is drawn, <code>center</code> - Center of the circle, <code>angle</code> is ellipse rotation angle in degrees, <code>startAngle</code> is starting angle of the elliptic arc in degrees, <code>endAngle</code> is ending angle of the elliptic arc in degrees,<code>color</code> is a color of object, and <code>thickness</code> is thickness of the ellipse arc outline, if positive. Otherwise, this indicates that a filled ellipse sector is to be drawn.
+
+<code>circle(img, center, radius, color)</code> where <code>img</code> is an image where the circle is drawn, <code>center</code> - Center of the circle, <code>radius</code> is a circle's radius, and <code>color</code> is a color of object.
 </section>
 
 ## Instructions
 <section id='instructions'>
-You should use <code>cv.ellipse()</code> to drow a elliptical figur with the given parameters.
-Also we need to use <code>cv.circle()</code> to drow a circle. We need it for drow a centers our figurs.
+
+You should use <code>cv.ellipse()</code> to draw a elliptical figur with the given parameters in <code>for</code>>.
+Also we need to use <code>cv.circle()</code> to draw a circle in <code>for</code> too. We need it for drow a centers our figurs.
 </section>
 
 ## Tests
@@ -58,7 +55,7 @@ tests:
     let ellipseAxes = new cv.Size(50, 50);
 
 
-    for (let i=0; i<3; ++i){
+    for (let i = 0; i < 3; ++i) {
       
 
     }
@@ -89,6 +86,7 @@ tests:
 
   function runSample() {
   
+    
     let mat = new cv.Mat(300, 300, cv.CV_8UC3, new cv.Scalar(255, 255, 255, 255));
     let startAngles = [240.0, 0.0, -240.0];
     let endAngles = [-60.0, 300.0, 60.0];
@@ -98,9 +96,10 @@ tests:
     let whiteColor = new cv.Scalar(255, 255, 255, 255);
     let ellipseAxes = new cv.Size(50, 50);
 
-    for (let i=0; i<3; ++i){
-        cv.ellipse(mat,centers[i], ellipseAxes, 0.0, 0.0, 300.0, color[i], cv.FILLED);
-        cv.circle(mat,centers[i], 25, new cv.Scalar(255, 255, 255, 255), cv.FILLED);
+
+    for (let i = 0; i < 3; ++i) {
+        cv.ellipse(mat,centers[i], ellipseAxes, 0.0, startAngles[i], endAngles[i], colors[i], cv.FILLED);
+        cv.circle(mat,centers[i], circleRadius, whiteColor, cv.FILLED); 
     }
   
     cv.putText(mat, "OpenCV", new cv.Point(30, 270), cv.FONT_HERSHEY_PLAIN, 4, new cv.Scalar(0, 0, 0, 255), 5)
