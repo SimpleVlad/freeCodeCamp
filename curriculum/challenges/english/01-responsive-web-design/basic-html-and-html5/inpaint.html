@@ -15,13 +15,12 @@ onclick="inpaint()"/>
 
 var checker = false;
 var src;
-var dst;
-var lastX = 0;
-var lastY = 0;
-var paint;
 var srcmat;
-var maskmat;
+var dst;
 var dstmat;
+var mask;
+var lastX;
+var lastY;
 var x;
 var y;
 
@@ -34,10 +33,9 @@ context.drawImage(img, 0, 0);
 
 document.getElementById("canvas").onmousedown = function(e)
 {
-  paint = true;
   x = e.pageX - this.offsetLeft;
   y = e.pageY - this.offsetTop;
-  if (lastX == 0)
+  if (lastX == undefined)
   {
       lastX = x;
       lastY = y;
@@ -46,10 +44,10 @@ document.getElementById("canvas").onmousedown = function(e)
 
 document.getElementById("canvas").onmousemove = function(e)
 {
-  if(paint)
+  if(lastX != undefined)
   {
     cv.line(src, new cv.Point(lastX, lastY), new cv.Point(x, y), new cv.Scalar(255, 255, 255, 255), 2);
-    cv.line(maskmat, new cv.Point(lastX, lastY), new cv.Point(x, y), new cv.Scalar(255, 255, 255, 255), 2);
+    cv.line(mask, new cv.Point(lastX, lastY), new cv.Point(x, y), new cv.Scalar(255, 255, 255, 255), 2);
     lastX = x;
     lastY = y;
     x = e.pageX - this.offsetLeft;
@@ -60,14 +58,11 @@ document.getElementById("canvas").onmousemove = function(e)
 
 document.getElementById("canvas").onmouseup = function(e)
 {
-  paint = false;
-  lastX = 0;
-  lastY = 0;
-};
-
-document.getElementById("canvas").onmouseleave = function(e)
-{
-  paint = false;
+  if (lastX != undefined)
+  {
+    lastX = undefined;
+    lastY = undefined;
+  }
 };
 
 function init()
@@ -80,7 +75,7 @@ function init()
     let rows = src.size().height;
     let ch = src.channels();
     srcmat = new cv.Mat();
-    maskmat = new cv.Mat(426, 640, cv.CV_8UC1, new cv.Scalar(0, 0, 0, 255));;
+    mask = new cv.Mat(426, 640, cv.CV_8UC1, new cv.Scalar(0, 0, 0, 255));;
     dstmat = new cv.Mat();
   }
 }
@@ -89,12 +84,12 @@ function inpaint()
 {
   cv.cvtColor(src, srcmat, cv.COLOR_RGBA2RGB);
   cv.cvtColor(dst, dstmat, cv.COLOR_RGBA2RGB);
-  cv.inpaint(srcmat, maskmat, dstmat, 3, cv.INPAINT_TELEA);
+  cv.inpaint(srcmat, mask, dstmat, 3, cv.INPAINT_TELEA);
   cv.imshow("canvas", dstmat);
   src.delete();
   dst.delete();
   srcmat.delete();
-  maskmat.delete();
+  mask.delete();
   dstmat.delete();
 }
 
