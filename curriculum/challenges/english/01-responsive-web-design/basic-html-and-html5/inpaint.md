@@ -8,12 +8,8 @@ videoUrl:
 ## Description
 <section id='description'>
 "Inpaint" method will help you restore your damaged picture via using one of the two algorithms: Fast Marching Method and algorithm based on fluid dynamics. In the current sample we are going to use Fast Marching Method(<code>cv.INPAINT_TELEA</code>): we are consider region of the picture for being inpainted. Algorithm starts from the boundary of this region and goes inside the region gradually filling everything in the boundary first. It takes a small neighbourhood around the pixel on the neigbourhood to be inpainted. This pixel is replaced by normalized weighted sum of all the known pixels in the neigbourhood.
-In this sample we are using next OpenCV functions:
-<code>cv.imread("id of the source image")</code>
-<code>cv.imshow("id of output canvas", name of the showed object)</code>
-<code>cv.line(cv.Mat for drawing, start point as new cv.Point(), end point as new cv.Point(), color as cv.Scalar(), thickness as a  number of pixels)</code>
-<code>cv.cvtColor(source, destination, method)</code>
-<code>cv.inpaint(source image, mask, destination, region of neighborhood as a number of pixels, method)</code>
+In this sample we are using next OpenCV function:
+<code>cv.inpaint(src, mask, dst, radius, method)</code> 
 </section>
 
 ## Instructions
@@ -41,24 +37,21 @@ tests:
 <div id='html-seed'>
 
 ```html
-
-<canvas id="canvas" >
-</canvas>
+<canvas id="canvas"></canvas>
 <img id="src" src="http://bit.ly/fcc-relaxing-cat" style="display:none"/>
-<input type="button" id="myButton" value="Test" disabled=true
-onclick="inpaint()"/>
+<input type="button" id="myButton" value="Test" onclick="inpaint()"/>
 
 <script type="text/javascript">
 
-var src, mask, lastX, lastY;
+var src, srcCopy, mask, lastX, lastY;
 
 window.onload = function()
 {
-context = document.getElementById("canvas").getContext("2d");
-img = document.getElementById("src");
-context.canvas.width = img.width;
-context.canvas.height = img.height;
-context.drawImage(img, 0, 0);
+  context = document.getElementById("canvas").getContext("2d");
+  img = document.getElementById("src");
+  context.canvas.width = img.width;
+  context.canvas.height = img.height;
+  context.drawImage(img, 0, 0);
 };
 
 document.getElementById("canvas").onmousedown = function(e)
@@ -73,9 +66,9 @@ document.getElementById("canvas").onmousemove = function(e)
   {
     let x = e.pageX - this.offsetLeft;
     let y = e.pageY - this.offsetTop;
-    cv.line(src, new cv.Point(lastX, lastY), new cv.Point(x, y),new cv.Scalar(255, 255, 255, 255), 2);
-    cv.line(mask, new cv.Point(lastX, lastY), new cv.Point(x, y),new cv.Scalar(255, 255, 255, 255), 2);
-    cv.imshow("canvas", src);
+    cv.line(srcCopy, {x: lastX, y: lastY}, {x: x, y: y}, [255, 255, 255, 255], 8);
+    cv.line(mask, {x: lastX, y: lastY} , {x: x, y: y}, [255, 255, 255, 255], 8);
+    cv.imshow("canvas", srcCopy);
     lastX = x;
     lastY = y;
   }
@@ -89,38 +82,37 @@ document.getElementById("canvas").onmouseup = document.getElementById("canvas").
 
 function init()
 {
-  let rgba = cv.imread("src");
-  src = new cv.Mat();
-  cv.cvtColor(rgba, src, cv.COLOR_RGBA2RGB);
-  mask = new cv.Mat.zeros(src.size(), cv.CV_8UC1);
-  rgba.delete();
-  let startPoint = [new cv.Point(0, 0), new cv.Point(Math.floor(src.cols * 0.2), Math.floor(src.rows * 0.4)), new cv.Point(Math.floor(src.cols * 0.8), Math.floor(src.rows * 0.9))];
-  let endPoint = [new cv.Point(Math.floor(src.cols * 0.5), Math.floor(src.rows * 0.5)), new cv.Point(Math.floor(src.cols * 0.4), Math.floor(src.rows * 0.8)), new cv.Point(Math.floor(src.cols * 0.6), Math.floor(src.rows * 0.2))];
-  for (let i=0;i<3;++i){ 
-    cv.line(src, startPoint[i], endPoint[i], new cv.Scalar(0, 0, 0, 255), 1);
+  srcCopy = cv.imread("src");
+  for (let i = 0; i < 5; ++i) {
+    let xstart = Math.floor(Math.random() * srcCopy.cols); 
+    let ystart = Math.floor(Math.random() * srcCopy.rows); 
+    let xend = Math.floor(Math.random() * srcCopy.cols); 
+    let yend = Math.floor(Math.random() * srcCopy.rows); 
+    cv.line(srcCopy, {x: xstart, y: ystart}, {x: xend, y: yend}, [0, 0, 0, 255], 2);
   }
-
-  cv.imshow("canvas", src);
+  cv.imshow("canvas", srcCopy);
+ 
+  src = new cv.Mat();
+  cv.cvtColor(srcCopy, src, cv.COLOR_RGBA2RGB);
+  mask = new cv.Mat.zeros(src.size(), cv.CV_8UC1);
 }
 
 function inpaint()
 {
   let dst = new cv.Mat();
-  cv.inpaint(src, mask, dst, 3, cv.INPAINT_TELEA);
+
   cv.imshow("canvas", dst);
   src.delete();
   mask.delete();
   dst.delete();
 }
-
-
 </script>
+
 
 <script async src="https://docs.opencv.org/master/opencv.js" 
         onload='cv["onRuntimeInitialized"]=()=> { init() }'  
         type="text/javascript">
 </script>
-
 ```
 
 </div>
@@ -130,23 +122,21 @@ function inpaint()
 <section id='solution'>
 
 ```html
-<canvas id="canvas" >
-</canvas>
+<canvas id="canvas"></canvas>
 <img id="src" src="http://bit.ly/fcc-relaxing-cat" style="display:none"/>
-<input type="button" id="myButton" value="Test" disabled=true
-onclick="inpaint()"/>
+<input type="button" id="myButton" value="Test" onclick="inpaint()"/>
 
 <script type="text/javascript">
 
-var src, mask, lastX, lastY;
+var src, srcCopy, mask, lastX, lastY;
 
 window.onload = function()
 {
-context = document.getElementById("canvas").getContext("2d");
-img = document.getElementById("src");
-context.canvas.width = img.width;
-context.canvas.height = img.height;
-context.drawImage(img, 0, 0);
+  context = document.getElementById("canvas").getContext("2d");
+  img = document.getElementById("src");
+  context.canvas.width = img.width;
+  context.canvas.height = img.height;
+  context.drawImage(img, 0, 0);
 };
 
 document.getElementById("canvas").onmousedown = function(e)
@@ -161,9 +151,9 @@ document.getElementById("canvas").onmousemove = function(e)
   {
     let x = e.pageX - this.offsetLeft;
     let y = e.pageY - this.offsetTop;
-    cv.line(src, new cv.Point(lastX, lastY), new cv.Point(x, y),new cv.Scalar(255, 255, 255, 255), 2);
-    cv.line(mask, new cv.Point(lastX, lastY), new cv.Point(x, y),new cv.Scalar(255, 255, 255, 255), 2);
-    cv.imshow("canvas", src);
+    cv.line(srcCopy, {x: lastX, y: lastY}, {x: x, y: y}, [255, 255, 255, 255], 8);
+    cv.line(mask, {x: lastX, y: lastY} , {x: x, y: y}, [255, 255, 255, 255], 8);
+    cv.imshow("canvas", srcCopy);
     lastX = x;
     lastY = y;
   }
@@ -177,19 +167,19 @@ document.getElementById("canvas").onmouseup = document.getElementById("canvas").
 
 function init()
 {
-  let rgba = cv.imread("src");
+  srcCopy = cv.imread("src");
+  for (let i = 0; i < 10; ++i) {
+    let xstart = Math.floor(Math.random() * srcCopy.cols); 
+    let ystart = Math.floor(Math.random() * srcCopy.rows); 
+    let xend = Math.floor(Math.random() * srcCopy.cols); 
+    let yend = Math.floor(Math.random() * srcCopy.rows); 
+    cv.line(srcCopy, {x: xstart, y: ystart}, {x: xend, y: yend}, [0, 0, 0, 255]);
+  }
+  cv.imshow("canvas", srcCopy);
+ 
   src = new cv.Mat();
-  cv.cvtColor(rgba, src, cv.COLOR_RGBA2RGB);
+  cv.cvtColor(srcCopy, src, cv.COLOR_RGBA2RGB);
   mask = new cv.Mat.zeros(src.size(), cv.CV_8UC1);
-  rgba.delete();
-
-  cv.line(src, new cv.Point(0, 0), new cv.Point(Math.floor(src.cols * 0.5), Math.floor(src.rows * 0.5)), new cv.Scalar(0, 0, 0, 255), 1);
-
-  cv.line(src, new cv.Point(Math.floor(src.cols * 0.2), Math.floor(src.rows * 0.4)), new cv.Point(Math.floor(src.cols * 0.4), Math.floor(src.rows * 0.8)), new cv.Scalar(0, 0, 0, 255), 1);
-
-  cv.line(src, new cv.Point(Math.floor(src.cols * 0.8), Math.floor(src.rows * 0.9)), new cv.Point(Math.floor(src.cols * 0.6), Math.floor(src.rows * 0.2)), new cv.Scalar(0, 0, 0, 255), 1);
-
-  cv.imshow("canvas", src);
 }
 
 function inpaint()
@@ -201,8 +191,8 @@ function inpaint()
   mask.delete();
   dst.delete();
 }
-
 </script>
+
 
 <script async src="https://docs.opencv.org/master/opencv.js" 
         onload='cv["onRuntimeInitialized"]=()=> { init() }'  
