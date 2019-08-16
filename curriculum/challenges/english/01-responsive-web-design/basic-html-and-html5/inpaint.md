@@ -19,7 +19,7 @@ In this sample we are using next OpenCV functions:
 ## Instructions
 <section id='instructions'>
 In the current sample we using <code>cv.line()</code> function for damage picture with black lines. You should restore picture with inpaint function.
-Write a function which can draw a region the picture. Via using that function you can create mask for <code>cv.inpaint()</code> function. Then use "inpaint" function with source picture, created mask, and empty <code>cv.Mat()</code> for saving and showing result.
+Via drawing you can create mask for <code>cv.inpaint()</code> function. Then use "inpaint" function with source picture, created mask, and empty <code>cv.Mat()</code> for saving and showing result.
 </section>
 
 ## Tests
