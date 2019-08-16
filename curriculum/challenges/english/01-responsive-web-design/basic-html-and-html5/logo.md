@@ -7,9 +7,9 @@ videoUrl:
 
 ## Description
 <section id='description'>
-Sometimes we need to select any objects at the image. OpenCV has drawing functions. In this tutorial, we’ll look at features like cv.ellipse() and cv.circle(). The main aim of this lesson is show how use this function and draw openCV logo.
+OpenCV has drawing functions which let you draw simple geometric primitives. In this tutorial, we will look at methods like cv.ellipse() and cv.circle(). The main aim of this lesson is to show how to use this functions and draw openCV logo.
 
-<code>ellipse(img, center, axes, angle, startAngle, endAngle, color)</code> where <code>img</code> is an image where the circle is drawn, <code>center</code> - Center of the circle, <code>angle</code> is ellipse rotation angle in degrees, <code>startAngle</code> is starting angle of the elliptic arc in degrees, <code>endAngle</code> is ending angle of the elliptic arc in degrees,<code>color</code> is a color of object, and <code>thickness</code> is thickness of the ellipse arc outline, if positive. Otherwise, this indicates that a filled ellipse sector is to be drawn.
+<code>ellipse(img, center, axes, angle, startAngle, endAngle, color)</code> where <code>img</code> is an image where the elips is drawn, <code>center</code> - Center of the elips, <code>angle</code> is ellipse rotation angle in degrees, <code>startAngle</code> is starting angle of the elliptic arc in degrees, <code>endAngle</code> is ending angle of the elliptic arc in degrees,<code>color</code> is a color of object, and <code>thickness</code> is thickness of the ellipse arc outline, if positive. Otherwise, this indicates that a filled ellipse sector is to be drawn.
 
 <code>circle(img, center, radius, color)</code> where <code>img</code> is an image where the circle is drawn, <code>center</code> - Center of the circle, <code>radius</code> is a circle's radius, and <code>color</code> is a color of object.
 </section>
