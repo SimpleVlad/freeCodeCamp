@@ -9,16 +9,16 @@ videoUrl:
 <section id='description'>
 OpenCV has drawing functions which let you draw simple geometric primitives. In this tutorial, we will look at methods like cv.ellipse() and cv.circle(). The main aim of this lesson is to show how to use this functions and draw openCV logo.
 
-<code>ellipse(img, center, axes, angle, startAngle, endAngle, color)</code> where <code>img</code> is an image where the elips is drawn, <code>center</code> - Center of the elips, <code>angle</code> is ellipse rotation angle in degrees, <code>startAngle</code> is starting angle of the elliptic arc in degrees, <code>endAngle</code> is ending angle of the elliptic arc in degrees,<code>color</code> is a color of object, and <code>thickness</code> is thickness of the ellipse arc outline, if positive. Otherwise, this indicates that a filled ellipse sector is to be drawn.
+<code>ellipse(img, center, axes, angle, startAngle, endAngle, color)</code> where <code>img</code> is an image where the elipse is drawn, <code>center</code> - center of the elipse, <code>angle</code> is ellipse rotation angle in degrees, <code>startAngle</code> is starting angle of the elliptic arc in degrees, <code>endAngle</code> is ending angle of the elliptic arc in degrees,<code>color</code> is a color of object, and <code>thickness</code> is thickness of the ellipse arc outline, if positive. Otherwise, this indicates that a filled ellipse sector is to be drawn.
 
-<code>circle(img, center, radius, color)</code> where <code>img</code> is an image where the circle is drawn, <code>center</code> - Center of the circle, <code>radius</code> is a circle's radius, and <code>color</code> is a color of object.
+<code>circle(img, center, radius, color)</code> where <code>img</code> is an image where the circle is drawn, <code>center</code> - center of the circle, <code>radius</code> is a circle's radius, and <code>color</code> is a color of object.
 </section>
 
 ## Instructions
 <section id='instructions'>
 
 You should use <code>cv.ellipse()</code> to draw a elliptical figur with the given parameters in <code>for</code>>.
-Also we need to use <code>cv.circle()</code> to draw a circle in <code>for</code> too. We need it for drow a centers our figurs.
+Also we need to use <code>cv.circle()</code> to draw a circle in <code>for</code> too. We need it to draw centers our figurs.
 </section>
 
 ## Tests
