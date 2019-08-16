@@ -7,8 +7,11 @@ videoUrl:
 
 ## Description
 <section id='description'>
-In this lesson we will see at cv.addWeighted. This function calculates the weighted sum of two arrays.
-We use the functions: <code>cv.addWeighted(src1, alpha,	src2,	beta,	gamma, dst)</code>  where <code>src1</code> is first input array, <code>alpha</code> is a weight of the first array elements, <code>src2</code> is second input array, <code>alpha</code> is a weight of the second array elements,<code>gamma</code> is a scalar added to each sum. <code>dst</code> output array that has the same size and number of channels as the input arrays.
+In this lesson we will look at cv.addWeighted. This function calculates the weighted sum of two arrays.
+We use the functions: <code>cv.addWeighted(src1, alpha,	src2,	beta,	gamma, dst)</code>  where <code>src1</code> is first input array, <code>alpha</code> is a weight of the first array elements, <code>src2</code> is second input array, <code>beta</code> is a weight of the second array elements,<code>gamma</code> is a scalar added to each sum. <code>dst</code> output array that has the same size and number of channels as the input arrays.
+The function addWeighted calculates the weighted sum of two arrays as follows:
+dst= saturate(src1 * alpha + src2 * beta + gamma)
+
 </section>
 
 ## Instructions
@@ -39,7 +42,10 @@ tests:
     let dst = new cv.Mat();
     let firstSrc = cv.imread("firstImageSrc");
     let secondSrc = cv.imread("secondImageSrc");
-    cv.addWeighted(firstSrc, 0.5, secondSrc, 1, 0.0, dst);
+    let alpha = 0.5;
+    let beta = 1; 
+    let gamma = 0.0;
+  
     cv.imshow("canvasOutput", dst);
     firstSrc.delete();
     secondSrc.delete();
@@ -71,7 +77,10 @@ tests:
     let dst = new cv.Mat();
     let firstSrc = cv.imread("firstImageSrc");
     let secondSrc = cv.imread("secondImageSrc");
-    cv.addWeighted(firstSrc, 0.5, secondSrc, 1, 0.0, dst);
+    let alpha = 0.5;
+    let beta = 1; 
+    let gamma = 0.0;
+    cv.addWeighted(firstSrc, alpha, secondSrc, beta, gamma, dst);
     cv.imshow("canvasOutput", dst);
     firstSrc.delete();
     secondSrc.delete();
