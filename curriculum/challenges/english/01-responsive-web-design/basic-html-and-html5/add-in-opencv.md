@@ -24,7 +24,7 @@ You should use <code>cv.addWeighted()</code> to blend two images.
 
 ```yml
 tests:
-   - text: Use <code>cv.addWeighted</code> to take a sum of two image
+   - text: Use <code>cv.addWeighted</code> to blend two image
      testString: assert(code.match(/cv.addWeighted/g),'to blend image'); 
 ```
  
