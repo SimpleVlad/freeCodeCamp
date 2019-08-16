@@ -17,8 +17,8 @@ OpenCV has drawing functions which let you draw simple geometric primitives. In 
 ## Instructions
 <section id='instructions'>
 
-You should use <code>cv.ellipse()</code> to draw a elliptical figur with the given parameters in <code>for</code>>.
-Also we need to use <code>cv.circle()</code> to draw a circle in <code>for</code> too. We need it to draw centers our figurs.
+You should use <code>cv.ellipse()</code> to draw a elliptical figure with the given parameters in <code>for</code>>.
+Also we need to use <code>cv.circle()</code> to draw a circle in <code>for</code> too. We need it to draw centers of our figures.
 </section>
 
 ## Tests
