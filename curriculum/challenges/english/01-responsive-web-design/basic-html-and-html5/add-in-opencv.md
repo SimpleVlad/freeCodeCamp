@@ -16,7 +16,7 @@ dst= src1 * alpha + src2 * beta + gamma
 
 ## Instructions
 <section id='instructions'>
-You should use <code>cv.addWeighted()</code> to blend two image.
+You should use <code>cv.addWeighted()</code> to blend two images.
 </section>
 
 ## Tests
