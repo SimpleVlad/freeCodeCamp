@@ -41,19 +41,16 @@ tests:
 <div id='html-seed'>
 
 ```html
-<p id="status">OpenCV.js is loading...</p>
+
 <canvas id="canvas" >
 </canvas>
-<img id="src" src="bird.jpg" style="display:none"/>
+<img id="src" src="http://bit.ly/fcc-relaxing-cat" style="display:none"/>
 <input type="button" id="myButton" value="Test" disabled=true
 onclick="inpaint()"/>
 
 <script type="text/javascript">
 
-var src;
-var mask;
-var lastX;
-var lastY;
+var src, mask, lastX, lastY;
 
 window.onload = function()
 {
@@ -76,18 +73,15 @@ document.getElementById("canvas").onmousemove = function(e)
   {
     let x = e.pageX - this.offsetLeft;
     let y = e.pageY - this.offsetTop;
-    cv.line(src, new cv.Point(lastX, lastY), new cv.Point(x, y),
-    new cv.Scalar(255, 255, 255, 255), 2);
-    cv.line(mask, new cv.Point(lastX, lastY), new cv.Point(x, y),
-    new cv.Scalar(255, 255, 255, 255), 2);
+    cv.line(src, new cv.Point(lastX, lastY), new cv.Point(x, y),new cv.Scalar(255, 255, 255, 255), 2);
+    cv.line(mask, new cv.Point(lastX, lastY), new cv.Point(x, y),new cv.Scalar(255, 255, 255, 255), 2);
     cv.imshow("canvas", src);
     lastX = x;
     lastY = y;
   }
 };
 
-document.getElementById("canvas").onmouseup =
-document.getElementById("canvas").onmouseleave = function(e)
+document.getElementById("canvas").onmouseup = document.getElementById("canvas").onmouseleave = function(e)
 {
     lastX = undefined;
     lastY = undefined;
@@ -100,17 +94,12 @@ function init()
   cv.cvtColor(rgba, src, cv.COLOR_RGBA2RGB);
   mask = new cv.Mat.zeros(src.size(), cv.CV_8UC1);
   rgba.delete();
+   
+  cv.line(src, new cv.Point(0, 0), new cv.Point(Math.floor(src.cols * 0.5), Math.floor(src.rows * 0.5)), new cv.Scalar(0, 0, 0, 255), 1);
 
-  cv.line(src, new cv.Point(0, 0), new cv.Point(Math.floor(src.cols * 0.5),
-  Math.floor(src.rows * 0.5)), new cv.Scalar(0, 0, 0, 255), 1);
+  cv.line(src, new cv.Point(Math.floor(src.cols * 0.2), Math.floor(src.rows * 0.4)), new cv.Point(Math.floor(src.cols * 0.4), Math.floor(src.rows * 0.8)), new cv.Scalar(0, 0, 0, 255), 1);
 
-  cv.line(src, new cv.Point(Math.floor(src.cols * 0.2), Math.floor(src.rows * 0.4)),
-  new cv.Point(Math.floor(src.cols * 0.4), Math.floor(src.rows * 0.8)),
-  new cv.Scalar(0, 0, 0, 255), 1);
-
-  cv.line(src, new cv.Point(Math.floor(src.cols * 0.8), Math.floor(src.rows * 0.9)),
-  new cv.Point(Math.floor(src.cols * 0.6), Math.floor(src.rows * 0.2)),
-  new cv.Scalar(0, 0, 0, 255), 1);
+  cv.line(src, new cv.Point(Math.floor(src.cols * 0.8), Math.floor(src.rows * 0.9)), new cv.Point(Math.floor(src.cols * 0.6), Math.floor(src.rows * 0.2)), new cv.Scalar(0, 0, 0, 255), 1);
 
   cv.imshow("canvas", src);
 }
@@ -125,21 +114,16 @@ function inpaint()
   dst.delete();
 }
 
-function onOpenCvReady()
-{
-  document.getElementById("status").innerHTML = "OpenCV.js is ready.";
-  cv["onRuntimeInitialized"] = () =>
-  {
-    document.getElementById("myButton").disabled = false;
-    init();
-  }
-}
 
 </script>
 
-<script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript">
+<script async src="https://docs.opencv.org/master/opencv.js" 
+        onload='cv["onRuntimeInitialized"]=()=> { init() }'  
+        type="text/javascript">
 </script>
+
 ```
+
 </div>
 </section>
 
@@ -147,19 +131,15 @@ function onOpenCvReady()
 <section id='solution'>
 
 ```html
-<p id="status">OpenCV.js is loading...</p>
 <canvas id="canvas" >
 </canvas>
-<img id="src" src="bird.jpg" style="display:none"/>
+<img id="src" src="http://bit.ly/fcc-relaxing-cat" style="display:none"/>
 <input type="button" id="myButton" value="Test" disabled=true
 onclick="inpaint()"/>
 
 <script type="text/javascript">
 
-var src;
-var mask;
-var lastX;
-var lastY;
+var src, mask, lastX, lastY;
 
 window.onload = function()
 {
@@ -182,18 +162,15 @@ document.getElementById("canvas").onmousemove = function(e)
   {
     let x = e.pageX - this.offsetLeft;
     let y = e.pageY - this.offsetTop;
-    cv.line(src, new cv.Point(lastX, lastY), new cv.Point(x, y),
-    new cv.Scalar(255, 255, 255, 255), 2);
-    cv.line(mask, new cv.Point(lastX, lastY), new cv.Point(x, y),
-    new cv.Scalar(255, 255, 255, 255), 2);
+    cv.line(src, new cv.Point(lastX, lastY), new cv.Point(x, y),new cv.Scalar(255, 255, 255, 255), 2);
+    cv.line(mask, new cv.Point(lastX, lastY), new cv.Point(x, y),new cv.Scalar(255, 255, 255, 255), 2);
     cv.imshow("canvas", src);
     lastX = x;
     lastY = y;
   }
 };
 
-document.getElementById("canvas").onmouseup =
-document.getElementById("canvas").onmouseleave = function(e)
+document.getElementById("canvas").onmouseup = document.getElementById("canvas").onmouseleave = function(e)
 {
     lastX = undefined;
     lastY = undefined;
@@ -207,16 +184,11 @@ function init()
   mask = new cv.Mat.zeros(src.size(), cv.CV_8UC1);
   rgba.delete();
 
-  cv.line(src, new cv.Point(0, 0), new cv.Point(Math.floor(src.cols * 0.5),
-  Math.floor(src.rows * 0.5)), new cv.Scalar(0, 0, 0, 255), 1);
+  cv.line(src, new cv.Point(0, 0), new cv.Point(Math.floor(src.cols * 0.5), Math.floor(src.rows * 0.5)), new cv.Scalar(0, 0, 0, 255), 1);
 
-  cv.line(src, new cv.Point(Math.floor(src.cols * 0.2), Math.floor(src.rows * 0.4)),
-  new cv.Point(Math.floor(src.cols * 0.4), Math.floor(src.rows * 0.8)),
-  new cv.Scalar(0, 0, 0, 255), 1);
+  cv.line(src, new cv.Point(Math.floor(src.cols * 0.2), Math.floor(src.rows * 0.4)), new cv.Point(Math.floor(src.cols * 0.4), Math.floor(src.rows * 0.8)), new cv.Scalar(0, 0, 0, 255), 1);
 
-  cv.line(src, new cv.Point(Math.floor(src.cols * 0.8), Math.floor(src.rows * 0.9)),
-  new cv.Point(Math.floor(src.cols * 0.6), Math.floor(src.rows * 0.2)),
-  new cv.Scalar(0, 0, 0, 255), 1);
+  cv.line(src, new cv.Point(Math.floor(src.cols * 0.8), Math.floor(src.rows * 0.9)), new cv.Point(Math.floor(src.cols * 0.6), Math.floor(src.rows * 0.2)), new cv.Scalar(0, 0, 0, 255), 1);
 
   cv.imshow("canvas", src);
 }
@@ -231,19 +203,11 @@ function inpaint()
   dst.delete();
 }
 
-function onOpenCvReady()
-{
-  document.getElementById("status").innerHTML = "OpenCV.js is ready.";
-  cv["onRuntimeInitialized"] = () =>
-  {
-    document.getElementById("myButton").disabled = false;
-    init();
-  }
-}
-
 </script>
 
-<script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript">
+<script async src="https://docs.opencv.org/master/opencv.js" 
+        onload='cv["onRuntimeInitialized"]=()=> { init() }'  
+        type="text/javascript">
 </script>
 ```
 
