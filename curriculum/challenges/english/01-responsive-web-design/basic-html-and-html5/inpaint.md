@@ -94,12 +94,11 @@ function init()
   cv.cvtColor(rgba, src, cv.COLOR_RGBA2RGB);
   mask = new cv.Mat.zeros(src.size(), cv.CV_8UC1);
   rgba.delete();
-   
-  cv.line(src, new cv.Point(0, 0), new cv.Point(Math.floor(src.cols * 0.5), Math.floor(src.rows * 0.5)), new cv.Scalar(0, 0, 0, 255), 1);
-
-  cv.line(src, new cv.Point(Math.floor(src.cols * 0.2), Math.floor(src.rows * 0.4)), new cv.Point(Math.floor(src.cols * 0.4), Math.floor(src.rows * 0.8)), new cv.Scalar(0, 0, 0, 255), 1);
-
-  cv.line(src, new cv.Point(Math.floor(src.cols * 0.8), Math.floor(src.rows * 0.9)), new cv.Point(Math.floor(src.cols * 0.6), Math.floor(src.rows * 0.2)), new cv.Scalar(0, 0, 0, 255), 1);
+  let startPoint = [new cv.Point(0, 0), new cv.Point(Math.floor(src.cols * 0.2), Math.floor(src.rows * 0.4)), new cv.Point(Math.floor(src.cols * 0.8), Math.floor(src.rows * 0.9))];
+  let endPoint = [new cv.Point(Math.floor(src.cols * 0.5), Math.floor(src.rows * 0.5)), new cv.Point(Math.floor(src.cols * 0.4), Math.floor(src.rows * 0.8)), new cv.Point(Math.floor(src.cols * 0.6), Math.floor(src.rows * 0.2))];
+  for (let i=0;i<3;++i){ 
+    cv.line(src, startPoint[i], endPoint[i], new cv.Scalar(0, 0, 0, 255), 1);
+  }
 
   cv.imshow("canvas", src);
 }
