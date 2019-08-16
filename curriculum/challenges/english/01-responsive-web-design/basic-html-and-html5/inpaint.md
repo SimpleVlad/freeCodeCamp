@@ -7,21 +7,19 @@ videoUrl:
 
 ## Description
 <section id='description'>
-Welcome to freeCodeCamp's HTML coding challenges. These will walk you through web development step-by-step.
-First, you'll start by building a simple web page using HTML. You can edit <code>code</code> in your <code>code editor</code>, which is embedded into this web page.
-Do you see the code in your code editor that says <code>&#60;h1&#62;Hello&#60;/h1&#62;</code>? That's an HTML <code>element</code>.
-Most HTML elements have an <code>opening tag</code> and a <code>closing tag</code>.
-Opening tags look like this:
-<code>&#60;h1&#62;</code>
-Closing tags look like this:
-<code>&#60;/h1&#62;</code>
-The only difference between opening and closing tags is the forward slash after the opening bracket of a closing tag.
-Each challenge has tests you can run at any time by clicking the "Run tests" button. When you pass all tests, you'll be prompted to submit your solution and go to the next coding challenge.
+"Inpaint" method will help you restore your damaged picture via using one of the two algorithms: Fast Marching Method and algorithm based on fluid dynamics. In the current sample we are going to use Fast Marching Method(<code>cv.INPAINT_TELEA</code>): we are consider region of the picture for being inpainted. Algorithm starts from the boundary of this region and goes inside the region gradually filling everything in the boundary first. It takes a small neighbourhood around the pixel on the neigbourhood to be inpainted. This pixel is replaced by normalized weighted sum of all the known pixels in the neigbourhood.
+In this sample we are using next OpenCV functions:
+<code>cv.imread("id of the source image")</code>
+<code>cv.imshow("id of output canvas", name of the showed object)</code>
+<code>cv.line(cv.Mat for drawing, start point as new cv.Point(), end point as new cv.Point(), color as cv.Scalar(), thickness as a  number of pixels)</code>
+<code>cv.cvtColor(source, destination, method)</code>
+<code>cv.inpaint(source image, mask, destination, region of neighborhood as a number of pixels, method)</code>
 </section>
 
 ## Instructions
 <section id='instructions'>
-I don't know what is happaning
+In the current sample we using <code>cv.line()</code> function for damage picture with black lines. You should restore picture with inpaint function.
+Write a function which can draw a region the picture. Via using that function you can create mask for <code>cv.inpaint()</code> function. Then use "inpaint" function with source picture, created mask, and empty <code>cv.Mat()</code> for saving and showing result.
 </section>
 
 ## Tests
