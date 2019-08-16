@@ -1,5 +1,5 @@
 ---
-id:
+id: 5d568cd5b6ed021018c687fa
 title: Inpaint
 challengeType: 0
 videoUrl:
