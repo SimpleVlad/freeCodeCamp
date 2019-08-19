@@ -1,6 +1,6 @@
 ---
 id: 5d47f9e144cec26fdb0a6365
-title: Draw an image
+title: Draw on image
 challengeType: 0
 videoUrl:
 ---
