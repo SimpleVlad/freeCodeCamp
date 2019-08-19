@@ -130,11 +130,11 @@
     ],
     [
       "5d4acfab0b988955b7e0c1e8",
-      "Rotate of image"
+      "Rotate an image"
     ],
     [
       "5d414905ef3f574940200d32",
-      "Resize of image"
+      "Resize an image"
     ],
     [
       "5d3ffa56e5b42a8be2747034",
@@ -142,7 +142,7 @@
     ],
     [
       "5d4299689da0aed2a684435c",
-      "Contour"
+      "Find contours"
     ],
     [
       "5d47f97b44cec26fdb0a6364",
