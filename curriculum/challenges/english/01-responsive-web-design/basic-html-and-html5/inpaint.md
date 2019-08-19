@@ -100,7 +100,6 @@ function init()
 function inpaint()
 {
   let dst = new cv.Mat();
-
   cv.imshow("canvas", dst);
   src.delete();
   mask.delete();

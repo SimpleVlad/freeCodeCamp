@@ -129,8 +129,12 @@
       "Smoothing Images"
     ],
     [
+      "5d4acfab0b988955b7e0c1e8",
+      "Roatation of image"
+    ],
+    [
       "5d414905ef3f574940200d32",
-      "Resize opencv"
+      "Resize of image"
     ],
     [
       "5d4299689da0aed2a684435c",
@@ -143,10 +147,6 @@
     [
       "5d47f9e144cec26fdb0a6365",
       "logo"
-    ],
-    [
-      "5d4acfab0b988955b7e0c1e8",
-      "Roatate"
     ],
     [
       "5d3ffa56e5b42a8be2747034",
