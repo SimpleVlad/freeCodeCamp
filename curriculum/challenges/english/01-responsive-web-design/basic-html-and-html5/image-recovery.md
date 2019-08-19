@@ -1,6 +1,6 @@
 ---
 id: 5d568cd5b6ed021018c687fa
-title: Inpaint
+title: Image recovery
 challengeType: 0
 videoUrl:
 ---
