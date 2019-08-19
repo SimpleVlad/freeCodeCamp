@@ -129,6 +129,10 @@
       "Smoothing Images"
     ],
     [
+      "5d47f97b44cec26fdb0a6364",
+      "Contrast"
+    ],
+    [
       "5d4acfab0b988955b7e0c1e8",
       "Rotate an image"
     ],
@@ -145,12 +149,8 @@
       "Find contours"
     ],
     [
-      "5d47f97b44cec26fdb0a6364",
-      "Contrast"
-    ],
-    [
       "5d47f9e144cec26fdb0a6365",
-      "logo"
+      "Draw an image"
     ],
     [
       "5d568cd5b6ed021018c687fa",
